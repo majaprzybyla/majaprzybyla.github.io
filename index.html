@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Maja Przybyła | Analityk Danych</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f6f3;
+            color: #202020;
+            line-height: 1.6;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 8%;
+            border-bottom: 1px solid #deddd8;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        nav a {
+            color: #202020;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            opacity: 0.6;
+        }
+
+        .language-switch {
+            margin-left: 30px;
+            font-size: 14px;
+        }
+
+        .language-switch button {
+            background: none;
+            border: none;
+            font: inherit;
+            cursor: pointer;
+            color: #999;
+            padding: 0;
+        }
+
+        .language-switch button.active {
+            color: #202020;
+            font-weight: 600;
+        }
+
+        .language-switch span {
+            color: #ccc;
+            margin: 0 5px;
+        }
+
+        .hero {
+            padding: 110px 8% 100px;
+            max-width: 1100px;
+        }
+
+        .eyebrow {
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(50px, 8vw, 92px);
+            line-height: 0.95;
+            letter-spacing: -4px;
+            max-width: 850px;
+            margin-bottom: 35px;
+        }
+
+        .intro {
+            font-size: 20px;
+            color: #555;
+            max-width: 620px;
+        }
+
+        .skills {
+            margin-top: 35px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        section {
+            padding: 80px 8%;
+            max-width: 1300px;
+            margin: auto;
+        }
+
+        .section-title {
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #777;
+            margin-bottom: 40px;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .project {
+            background: white;
+            border: 1px solid #deddd8;
+            padding: 35px;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .project:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.07);
+        }
+
+        .project-type {
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 15px;
+        }
+
+        .project h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+
+        .project p {
+            color: #666;
+            max-width: 500px;
+        }
+
+        .project-tools {
+            margin-top: 25px;
+            font-size: 13px;
+            color: #555;
+        }
+
+        .about {
+            max-width: 750px;
+        }
+
+        .about p {
+            font-size: 20px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            padding: 50px 8%;
+            border-top: 1px solid #deddd8;
+            display: flex;
+            justify-content: space-between;
+            color: #777;
+            font-size: 13px;
+        }
+
+        footer a {
+            color: #202020;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        footer a:hover {
+            opacity: 0.6;
+        }
+
+        @media (max-width: 700px) {
+
+            nav {
+                padding: 25px 6%;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            nav a {
+                margin-left: 15px;
+            }
+
+            .language-switch {
+                margin-left: 15px;
+            }
+
+            .hero {
+                padding: 80px 6%;
+            }
+
+            section {
+                padding: 60px 6%;
+            }
+
+            h1 {
+                letter-spacing: -2px;
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            footer a {
+                margin-left: 0;
+                margin-right: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">Maja Przybyła</div>
+
+        <div>
+            <a href="#projects" data-pl="Projekty" data-en="Projects">Projekty</a>
+
+            <a href="#about" data-pl="O mnie" data-en="About">O mnie</a>
+
+            <span class="language-switch">
+                <button id="pl-btn" class="active" onclick="setLanguage('pl')">
+                    PL
+                </button>
+
+                <span>|</span>
+
+                <button id="en-btn" onclick="setLanguage('en')">
+                    EN
+                </button>
+            </span>
+        </div>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <header class="hero">
+
+        <div class="eyebrow"
+             data-pl="Analityk Danych"
+             data-en="Data Analyst">
+            Analityk Danych
+        </div>
+
+        <h1
+            data-pl="Przekształcam dane w czytelne wnioski."
+            data-en="Turning data into clear insights.">
+            Przekształcam dane w czytelne wnioski.
+        </h1>
+
+        <p class="intro"
+           data-pl="Pracuję z danymi, aby odkrywać zależności, odpowiadać na pytania i przedstawiać wyniki analiz w jasny i zrozumiały sposób."
+           data-en="I work with data to uncover patterns, answer questions, and communicate results clearly.">
+            Pracuję z danymi, aby odkrywać zależności, odpowiadać na pytania
+            i przedstawiać wyniki analiz w jasny i zrozumiały sposób.
+        </p>
+
+        <p class="skills">
+            SQL · Excel · Power BI · Python
+        </p>
+
+    </header>
+
+
+    <!-- PROJECTS -->
+
+    <section id="projects">
+
+        <div class="section-title"
+             data-pl="Wybrane projekty"
+             data-en="Selected Projects">
+            Wybrane projekty
+        </div>
+
+        <div class="projects">
+
+
+            <!-- POWER BI -->
+
+            <div class="project">
+
+                <div>
+
+                    <div class="project-type">Power BI</div>
+
+                    <h3
+                        data-pl="Dashboard w Power BI"
+                        data-en="Power BI Dashboard">
+                        Dashboard w Power BI
+                    </h3>
+
+                    <p
+                        data-pl="Interaktywny dashboard przedstawiający wyniki biznesowe i kluczowe wskaźniki."
+                        data-en="Interactive dashboard exploring business performance and key metrics.">
+                        Interaktywny dashboard przedstawiający wyniki biznesowe
+                        i kluczowe wskaźniki.
+                    </p>
+
+                </div>
+
+                <div class="project-tools">
+                    Power BI · Data Visualization
+                </div>
+
+            </div>
+
+
+            <!-- EXCEL -->
+
+            <div class="project">
+
+                <div>
+
+                    <div class="project-type">Excel</div>
+
+                    <h3
+                        data-pl="Analiza w Excelu"
+                        data-en="Excel Analysis">
+                        Analiza w Excelu
+                    </h3>
+
+                    <p
+                        data-pl="Analiza danych z wykorzystaniem formuł, tabel przestawnych i wizualizacji."
+                        data-en="Data analysis using formulas, PivotTables, and visualizations.">
+                        Analiza danych z wykorzystaniem formuł,
+                        tabel przestawnych i wizualizacji.
+                    </p>
+
+                </div>
+
+                <div class="project-tools">
+                    Excel · PivotTables · XLOOKUP
+                </div>
+
+            </div>
+
+
+            <!-- SQL -->
+
+            <div class="project">
+
+                <div>
+
+                    <div class="project-type">SQL</div>
+
+                    <h3
+                        data-pl="Analiza danych w SQL"
+                        data-en="SQL Analysis">
+                        Analiza danych w SQL
+                    </h3>
+
+                    <p
+                        data-pl="Eksploracja i analiza danych z wykorzystaniem SQL, w tym JOIN, CTE i funkcji okna."
+                        data-en="Data exploration and analysis using SQL, including joins, CTEs and window functions.">
+                        Eksploracja i analiza danych z wykorzystaniem SQL,
+                        w tym JOIN, CTE i funkcji okna.
+                    </p>
+
+                </div>
+
+                <div class="project-tools">
+                    SQL Server · T-SQL
+                </div>
+
+            </div>
+
+
+            <!-- PYTHON -->
+
+            <div class="project">
+
+                <div>
+
+                    <div class="project-type">Python</div>
+
+                    <h3
+                        data-pl="Analiza danych w Pythonie"
+                        data-en="Python Data Analysis">
+                        Analiza danych w Pythonie
+                    </h3>
+
+                    <p
+                        data-pl="Czyszczenie danych i analiza eksploracyjna z wykorzystaniem Pythona i biblioteki pandas."
+                        data-en="Data cleaning and exploratory analysis using Python and pandas.">
+                        Czyszczenie danych i analiza eksploracyjna
+                        z wykorzystaniem Pythona i biblioteki pandas.
+                    </p>
+
+                </div>
+
+                <div class="project-tools">
+                    Python · pandas
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <div class="section-title"
+             data-pl="O mnie"
+             data-en="About">
+            O mnie
+        </div>
+
+        <div class="about">
+
+            <p
+                data-pl="Jestem analitykiem skoncentrowanym na pracy z danymi, z wykształceniem w obszarze ekonomii, Business Intelligence i zarządzania."
+                data-en="I'm a data-focused analyst with a background in economics, business intelligence and management.">
+                Jestem analitykiem skoncentrowanym na pracy z danymi,
+                z wykształceniem w obszarze ekonomii, Business Intelligence
+                i zarządzania.
+            </p>
+
+            <p
+                data-pl="Lubię pracować z danymi, odkrywać istotne zależności i przekładać wyniki analiz na jasne i zrozumiałe wnioski."
+                data-en="I enjoy working with data, finding meaningful patterns, and turning analysis into clear and understandable results.">
+                Lubię pracować z danymi, odkrywać istotne zależności
+                i przekładać wyniki analiz na jasne i zrozumiałe wnioski.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div>
+            © 2026 Maja Przybyła
+        </div>
+
+        <div>
+
+            <a href="https://github.com/majaprzybyla"
+               target="_blank">
+                GitHub
+            </a>
+
+            <a href="#"
+               target="_blank">
+                LinkedIn
+            </a>
+
+        </div>
+
+    </footer>
+
+
+    <!-- LANGUAGE SWITCHING -->
+
+    <script>
+
+        function setLanguage(language) {
+
+            document.documentElement.lang = language;
+
+            const elements = document.querySelectorAll("[data-pl]");
+
+            elements.forEach(function(element) {
+
+                element.textContent = element.getAttribute(
+                    "data-" + language
+                );
+
+            });
+
+
+            // Update active language button
+
+            document.getElementById("pl-btn")
+                .classList.toggle("active", language === "pl");
+
+            document.getElementById("en-btn")
+                .classList.toggle("active", language === "en");
+
+
+            // Update page title
+
+            if (language === "pl") {
+
+                document.title =
+                    "Maja Przybyła | Analityk Danych";
+
+            } else {
+
+                document.title =
+                    "Maja Przybyła | Data Analyst";
+
+            }
+
+
+            // Remember language choice
+
+            localStorage.setItem("language", language);
+        }
+
+
+        // Load saved language
+
+        const savedLanguage =
+            localStorage.getItem("language") || "pl";
+
+        setLanguage(savedLanguage);
+
+    </script>
+
+</body>
+</html>
