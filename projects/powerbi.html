@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Maja Przybyła | Power BI</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f6f3;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 50px 25px 80px;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .back-link {
+            color: #555;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            color: #222;
+        }
+
+        .language-switch {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 14px;
+        }
+
+        .language-switch button {
+            border: none;
+            background: none;
+            padding: 0;
+            cursor: pointer;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .language-switch button.active {
+            color: #222;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 42px;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .intro {
+            max-width: 800px;
+            color: #555;
+            font-size: 17px;
+            margin-bottom: 25px;
+        }
+
+        .section {
+            margin-top: 70px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            margin-bottom: 25px;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        .project-card {
+            display: block;
+            background: white;
+            border: 1px solid #deddd8;
+            padding: 30px;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.07);
+        }
+
+        .project-type {
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 12px;
+        }
+
+        .project-card h2 {
+            font-size: 28px;
+            margin: 0 0 15px;
+            letter-spacing: -1px;
+        }
+
+        .project-card p {
+            color: #666;
+            max-width: 750px;
+            margin-bottom: 20px;
+        }
+
+        .project-tools {
+            font-size: 13px;
+            color: #555;
+        }
+
+        .project-arrow {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        @media (max-width: 700px) {
+
+            .container {
+                padding: 30px 18px 60px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .project-card h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- TOP BAR -->
+
+        <div class="top-bar">
+
+            <a href="../index.html"
+               class="back-link"
+               data-pl="← Powrót"
+               data-en="← Back">
+                ← Powrót
+            </a>
+
+            <div class="language-switch">
+
+                <button id="pl-btn"
+                        class="active"
+                        onclick="setLanguage('pl')">
+                    PL
+                </button>
+
+                <span>|</span>
+
+                <button id="en-btn"
+                        onclick="setLanguage('en')">
+                    EN
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- INTRO -->
+
+        <header>
+
+            <h1
+                data-pl="Power BI"
+                data-en="Power BI">
+                Power BI
+            </h1>
+
+            <p class="intro"
+               data-pl="Projekty analityczne wykorzystujące Power BI, Power Query i DAX do przygotowania, analizy i wizualizacji danych."
+               data-en="Data analysis projects using Power BI, Power Query, and DAX for data preparation, analysis, and visualization.">
+                Projekty analityczne wykorzystujące Power BI,
+                Power Query i DAX do przygotowania, analizy
+                i wizualizacji danych.
+            </p>
+
+        </header>
+
+
+        <!-- PROJECTS -->
+
+        <section class="section">
+
+            <h2 class="section-title"
+                data-pl="Projekty"
+                data-en="Projects">
+                Projekty
+            </h2>
+
+
+            <div class="projects">
+
+
+                <!-- EMPLOYMENT PROJECT -->
+
+                <a href="powerbi-employment.html"
+                   class="project-card">
+
+                    <div class="project-type">
+                        Power BI
+                    </div>
+
+                    <h2
+                        data-pl="Analiza zatrudnienia"
+                        data-en="Employment Analysis">
+                        Analiza zatrudnienia
+                    </h2>
+
+                    <p
+                        data-pl="Analiza zatrudnienia oraz udziału kobiet w zatrudnieniu w przedsiębiorstwach w latach 2020–2023, z wykorzystaniem Power Query, DAX i interaktywnego dashboardu."
+                        data-en="Analysis of employment and the share of women among employees across companies between 2020 and 2023, using Power Query, DAX, and an interactive dashboard.">
+                        Analiza zatrudnienia oraz udziału kobiet
+                        w zatrudnieniu w przedsiębiorstwach
+                        w latach 2020–2023, z wykorzystaniem
+                        Power Query, DAX i interaktywnego dashboardu.
+                    </p>
+
+                    <div class="project-tools">
+                        Power BI · Power Query · DAX
+                    </div>
+
+                    <div class="project-arrow"
+                         data-pl="Zobacz projekt →"
+                         data-en="View project →">
+                        Zobacz projekt →
+                    </div>
+
+                </a>
+
+
+                <!-- FUTURE PROJECTS CAN BE ADDED HERE -->
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- LANGUAGE SWITCHING -->
+
+    <script>
+
+        function setLanguage(language) {
+
+            document.documentElement.lang = language;
+
+            const elements =
+                document.querySelectorAll("[data-pl]");
+
+            elements.forEach(function(element) {
+
+                element.textContent =
+                    element.getAttribute("data-" + language);
+
+            });
+
+
+            document.getElementById("pl-btn")
+                .classList.toggle(
+                    "active",
+                    language === "pl"
+                );
+
+            document.getElementById("en-btn")
+                .classList.toggle(
+                    "active",
+                    language === "en"
+                );
+
+
+            document.title =
+                language === "pl"
+                    ? "Maja Przybyła | Power BI"
+                    : "Maja Przybyła | Power BI";
+
+
+            localStorage.setItem(
+                "language",
+                language
+            );
+        }
+
+
+        const savedLanguage =
+            localStorage.getItem("language") || "pl";
+
+        setLanguage(savedLanguage);
+
+    </script>
+
+</body>
+</html>
