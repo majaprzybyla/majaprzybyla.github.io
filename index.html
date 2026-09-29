@@ -38,7 +38,8 @@
             color: #202020;
             text-decoration: none;
             margin-left: 30px;
-            font-size: 14px;
+            font-size: 18px;
+            font-weight: 500;
         }
 
         nav a:hover {
@@ -69,51 +70,44 @@
             margin: 0 5px;
         }
 
-        .hero {
-            padding: 110px 8% 100px;
-            max-width: 1100px;
+
+        /* INTRO */
+
+        .intro-section {
+            padding: 90px 8% 80px;
+            max-width: 1250px;
+            margin: auto;
         }
 
-        .eyebrow {
-            font-size: 13px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #777;
-            margin-bottom: 20px;
+        .intro-text {
+            max-width: 1050px;
         }
 
-        h1 {
-            font-size: clamp(50px, 8vw, 92px);
-            line-height: 0.95;
-            letter-spacing: -4px;
-            max-width: 850px;
-            margin-bottom: 35px;
-            color: #8b6f8f;
+        .intro-text p {
+            font-size: 19px;
+            line-height: 1.75;
+            color: #A732CF;
+            margin-bottom: 28px;
         }
 
-        .intro {
-            font-size: 20px;
-            color: #555;
-            max-width: 620px;
+        .intro-text p:last-child {
+            margin-bottom: 0;
         }
 
-        .skills {
-            margin-top: 35px;
-            font-size: 14px;
-            color: #666;
-        }
 
-        section {
-            padding: 80px 8%;
+        /* PROJECTS */
+
+        section.projects-section {
+            padding: 70px 8% 90px;
             max-width: 1300px;
             margin: auto;
         }
 
         .section-title {
-            font-size: 14px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #777;
+            font-size: 26px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            color: #202020;
             margin-bottom: 40px;
         }
 
@@ -133,7 +127,6 @@
             justify-content: space-between;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
 
-            /* Makes the entire project card clickable */
             text-decoration: none;
             color: inherit;
         }
@@ -168,15 +161,8 @@
             color: #555;
         }
 
-        .about {
-            max-width: 750px;
-        }
 
-        .about p {
-            font-size: 20px;
-            color: #555;
-            margin-bottom: 20px;
-        }
+        /* FOOTER */
 
         footer {
             padding: 50px 8%;
@@ -197,6 +183,9 @@
             opacity: 0.6;
         }
 
+
+        /* MOBILE */
+
         @media (max-width: 700px) {
 
             nav {
@@ -207,22 +196,30 @@
 
             nav a {
                 margin-left: 15px;
+                font-size: 17px;
             }
 
             .language-switch {
                 margin-left: 15px;
             }
 
-            .hero {
-                padding: 80px 6%;
+            .intro-section {
+                padding: 65px 6% 60px;
             }
 
-            section {
-                padding: 60px 6%;
+            .intro-text p {
+                font-size: 17px;
+                line-height: 1.7;
+                margin-bottom: 24px;
             }
 
-            h1 {
-                letter-spacing: -2px;
+            section.projects-section {
+                padding: 55px 6% 70px;
+            }
+
+            .section-title {
+                font-size: 24px;
+                margin-bottom: 30px;
             }
 
             .projects {
@@ -244,11 +241,14 @@
 
 <body>
 
+
     <!-- NAVIGATION -->
 
     <nav>
 
-        <div class="logo">Maja Przybyła</div>
+        <div class="logo">
+            Maja Przybyła
+        </div>
 
         <div>
 
@@ -256,12 +256,6 @@
                data-pl="Projekty"
                data-en="Projects">
                 Projekty
-            </a>
-
-            <a href="#about"
-               data-pl="O mnie"
-               data-en="About">
-                O mnie
             </a>
 
             <span class="language-switch">
@@ -286,45 +280,55 @@
     </nav>
 
 
-    <!-- HERO -->
+    <!-- INTRODUCTION -->
 
-    <header class="hero">
+    <section class="intro-section">
 
-        <div class="eyebrow"
-             data-pl="Analityk Danych"
-             data-en="Data Analyst">
-            Analityk Danych
+        <div class="intro-text">
+
+            <p
+                data-pl="Łączę wykształcenie z zakresu ekonomii i zarządzania z praktycznym doświadczeniem w pracy z danymi, wykorzystując analizę danych do wyciągania konkretnych i użytecznych wniosków wspierających decyzje biznesowe."
+                data-en="I combine an educational background in economics and management with practical experience working with data, using data analysis to draw concrete and actionable insights that support business decisions.">
+                Łączę wykształcenie z zakresu ekonomii i zarządzania z praktycznym doświadczeniem w pracy z danymi, wykorzystując analizę danych do wyciągania konkretnych i użytecznych wniosków wspierających decyzje biznesowe.
+            </p>
+
+
+            <p
+                data-pl="W swoich projektach pracowałam z Power BI, SQL, Excelem, Pythonem oraz Google Analytics 4, dzięki czemu potrafię podchodzić do problemów biznesowych z różnych perspektyw – od przygotowania i analizy danych po ich wizualizację i interpretację."
+                data-en="In my projects, I have worked with Power BI, SQL, Excel, Python, and Google Analytics 4, allowing me to approach business problems from different perspectives – from data preparation and analysis to visualization and interpretation.">
+                W swoich projektach pracowałam z Power BI, SQL, Excelem, Pythonem oraz Google Analytics 4, dzięki czemu potrafię podchodzić do problemów biznesowych z różnych perspektyw – od przygotowania i analizy danych po ich wizualizację i interpretację.
+            </p>
+
+
+            <p
+                data-pl="AI jest integralną częścią mojego sposobu pracy, pozwalając mi działać szybciej i efektywniej oraz dostosowywać się do współczesnych realiów pracy i biznesu. Wykorzystuję AI m.in. do efektywnego promptowania, generowania i modyfikowania kodu, weryfikowania oraz edytowania rozwiązań wygenerowanych przez AI, a także krytycznej interpretacji otrzymywanych wyników."
+                data-en="AI is an integral part of the way I work, allowing me to work faster and more efficiently while adapting to the realities of modern work and business. I use AI for effective prompting, generating and modifying code, reviewing and editing AI-generated solutions, and critically interpreting the results.">
+                AI jest integralną częścią mojego sposobu pracy, pozwalając mi działać szybciej i efektywniej oraz dostosowywać się do współczesnych realiów pracy i biznesu. Wykorzystuję AI m.in. do efektywnego promptowania, generowania i modyfikowania kodu, weryfikowania oraz edytowania rozwiązań wygenerowanych przez AI, a także krytycznej interpretacji otrzymywanych wyników.
+            </p>
+
+
+            <p
+                data-pl="Posiadam tytuł magistra ekonomii ze specjalizacją Business Intelligence, a obecnie finalizuję drugi stopień magisterski z zarządzania (ze specjalizacją Zarządzanie Rozwojem Przedsiębiorstwa), łącząc analityczne myślenie ze znajomością procesów biznesowych i podejmowania decyzji. Interesuje mnie praktyczne wykorzystanie danych, technologii i AI do rozwiązywania problemów biznesowych oraz przedstawiania wyników w jasny i użyteczny sposób."
+                data-en="I hold a Master's degree in Economics with a specialization in Business Intelligence and am currently finalizing a second Master's degree in Management, specializing in Business Development Management. I combine analytical thinking with an understanding of business processes and decision-making. I am interested in the practical use of data, technology, and AI to solve business problems and communicate results in a clear and useful way.">
+                Posiadam tytuł magistra ekonomii ze specjalizacją Business Intelligence, a obecnie finalizuję drugi stopień magisterski z zarządzania (ze specjalizacją Zarządzanie Rozwojem Przedsiębiorstwa), łącząc analityczne myślenie ze znajomością procesów biznesowych i podejmowania decyzji. Interesuje mnie praktyczne wykorzystanie danych, technologii i AI do rozwiązywania problemów biznesowych oraz przedstawiania wyników w jasny i użyteczny sposób.
+            </p>
+
         </div>
 
-        <h1
-            data-pl="Przekształcam dane w czytelne wnioski."
-            data-en="Turning data into clear insights.">
-            Przekształcam dane w czytelne wnioski.
-        </h1>
-
-        <p class="intro"
-           data-pl="Pracuję z danymi, aby odkrywać zależności, odpowiadać na pytania i przedstawiać wyniki analiz w jasny i zrozumiały sposób."
-           data-en="I work with data to uncover patterns, answer questions, and communicate results clearly.">
-            Pracuję z danymi, aby odkrywać zależności, odpowiadać na pytania
-            i przedstawiać wyniki analiz w jasny i zrozumiały sposób.
-        </p>
-
-        <p class="skills">
-            SQL · Excel · Power BI · Python
-        </p>
-
-    </header>
+    </section>
 
 
     <!-- PROJECTS -->
 
-    <section id="projects">
+    <section id="projects"
+             class="projects-section">
 
         <div class="section-title"
              data-pl="Wybrane projekty"
              data-en="Selected Projects">
             Wybrane projekty
         </div>
+
 
         <div class="projects">
 
@@ -412,7 +416,7 @@
 
                     <p
                         data-pl="Eksploracja i analiza danych z wykorzystaniem SQL, w tym JOIN, CTE i funkcji okna."
-                        data-en="Data exploration and analysis using SQL, including joins, CTEs and window functions.">
+                        data-en="Data exploration and analysis using SQL, including joins, CTEs, and window functions.">
                         Eksploracja i analiza danych z wykorzystaniem SQL,
                         w tym JOIN, CTE i funkcji okna.
                     </p>
@@ -458,38 +462,6 @@
 
             </a>
 
-
-        </div>
-
-    </section>
-
-
-    <!-- ABOUT -->
-
-    <section id="about">
-
-        <div class="section-title"
-             data-pl="O mnie"
-             data-en="About">
-            O mnie
-        </div>
-
-        <div class="about">
-
-            <p
-                data-pl="Jestem analitykiem skoncentrowanym na pracy z danymi, z wykształceniem w obszarze ekonomii, Business Intelligence i zarządzania."
-                data-en="I'm a data-focused analyst with a background in economics, business intelligence and management.">
-                Jestem analitykiem skoncentrowanym na pracy z danymi,
-                z wykształceniem w obszarze ekonomii, Business Intelligence
-                i zarządzania.
-            </p>
-
-            <p
-                data-pl="Lubię pracować z danymi, odkrywać istotne zależności i przekładać wyniki analiz na jasne i zrozumiałe wnioski."
-                data-en="I enjoy working with data, finding meaningful patterns, and turning analysis into clear and understandable results.">
-                Lubię pracować z danymi, odkrywać istotne zależności
-                i przekładać wyniki analiz na jasne i zrozumiałe wnioski.
-            </p>
 
         </div>
 
