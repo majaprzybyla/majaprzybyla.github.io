@@ -132,6 +132,10 @@
             flex-direction: column;
             justify-content: space-between;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+            /* Makes the entire project card clickable */
+            text-decoration: none;
+            color: inherit;
         }
 
         .project:hover {
@@ -312,32 +316,34 @@
 
             <!-- POWER BI -->
 
-            <div class="project">
+            <a href="projects/powerbi-employment.html"
+               class="project">
 
                 <div>
 
                     <div class="project-type">Power BI</div>
 
                     <h3
-                        data-pl="Dashboard w Power BI"
-                        data-en="Power BI Dashboard">
-                        Dashboard w Power BI
+                        data-pl="Analiza zatrudnienia w Power BI"
+                        data-en="Employment Analysis in Power BI">
+                        Analiza zatrudnienia w Power BI
                     </h3>
 
                     <p
-                        data-pl="Interaktywny dashboard przedstawiający wyniki biznesowe i kluczowe wskaźniki."
-                        data-en="Interactive dashboard exploring business performance and key metrics.">
-                        Interaktywny dashboard przedstawiający wyniki biznesowe
-                        i kluczowe wskaźniki.
+                        data-pl="Analiza zatrudnienia oraz udziału kobiet w zatrudnieniu w przedsiębiorstwach w latach 2020–2023, z wykorzystaniem Power Query, DAX i interaktywnego dashboardu."
+                        data-en="Analysis of employment and the share of women among employees across companies between 2020 and 2023, using Power Query, DAX, and an interactive dashboard.">
+                        Analiza zatrudnienia oraz udziału kobiet w zatrudnieniu
+                        w przedsiębiorstwach w latach 2020–2023, z wykorzystaniem
+                        Power Query, DAX i interaktywnego dashboardu.
                     </p>
 
                 </div>
 
                 <div class="project-tools">
-                    Power BI · Data Visualization
+                    Power BI · Power Query · DAX
                 </div>
 
-            </div>
+            </a>
 
 
             <!-- EXCEL -->
@@ -428,6 +434,7 @@
                 </div>
 
             </div>
+
 
         </div>
 
