@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Maja Przybyła | Python</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f6f3;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 50px 25px 80px;
+        }
+
+        /* TOP BAR */
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .back-link {
+            color: #555;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            color: #222;
+        }
+
+        .language-switch {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 14px;
+        }
+
+        .language-switch button {
+            border: none;
+            background: none;
+            padding: 0;
+            cursor: pointer;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .language-switch button.active {
+            color: #222;
+            font-weight: bold;
+        }
+
+        /* HEADER */
+
+        h1 {
+            font-size: 42px;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .project-intro {
+            max-width: 800px;
+            color: #555;
+            font-size: 17px;
+            margin-bottom: 25px;
+        }
+
+        .project-intro p {
+            margin-bottom: 20px;
+        }
+
+        .project-intro ul {
+            padding-left: 22px;
+            margin-top: 10px;
+        }
+
+        .project-intro li {
+            margin-bottom: 6px;
+        }
+
+        .tools {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 70px;
+        }
+
+        /* SECTIONS */
+
+        .section {
+            margin-bottom: 70px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            margin-bottom: 25px;
+        }
+
+        .section-description {
+            max-width: 850px;
+            color: #555;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        /* SCREENSHOTS */
+
+        .screenshot {
+            margin: 0 0 40px;
+        }
+
+        .screenshot img {
+            display: block;
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+            border-radius: 6px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease;
+        }
+
+        .screenshot img:hover {
+            transform: translateY(-2px);
+        }
+
+        /* REGRESSION */
+
+        .regression-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .regression-grid .screenshot {
+            margin-bottom: 0;
+        }
+
+        .regression-grid img {
+            width: 100%;
+        }
+
+        /* LIGHTBOX */
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.88);
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .lightbox img {
+            max-width: 95vw;
+            max-height: 90vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 35px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            .container {
+                padding: 30px 18px 60px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .regression-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+    <!-- TOP BAR -->
+
+    <div class="top-bar">
+
+        <a
+            href="../index.html"
+            class="back-link"
+            data-pl="← Powrót do projektów"
+            data-en="← Back to projects">
+            ← Powrót do projektów
+        </a>
+
+        <div class="language-switch">
+
+            <button
+                id="pl-btn"
+                onclick="setLanguage('pl')">
+                PL
+            </button>
+
+            <span>|</span>
+
+            <button
+                id="en-btn"
+                onclick="setLanguage('en')">
+                EN
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- PROJECT INTRO -->
+
+    <h1
+        data-pl="Analiza czynników ekonomicznych wpływających na poziom szczęścia"
+        data-en="Analysis of Economic Factors Influencing Happiness Levels">
+        Analiza czynników ekonomicznych wpływających na poziom szczęścia
+    </h1>
+
+
+    <div class="project-intro">
+
+        <p
+            data-pl="Projekt analityczny wykonany w Pythonie na potrzeby pracy magisterskiej. Celem była analiza zależności między poziomem szczęścia w poszczególnych krajach a wybranymi czynnikami ekonomicznymi i społeczno-gospodarczymi."
+            data-en="A data analysis project developed in Python as part of my Master’s thesis. The aim was to analyze the relationship between happiness levels across countries and selected economic and socio-economic factors.">
+            Projekt analityczny wykonany w Pythonie na potrzeby pracy magisterskiej. Celem była analiza zależności między poziomem szczęścia w poszczególnych krajach a wybranymi czynnikami ekonomicznymi i społeczno-gospodarczymi.
+        </p>
+
+
+        <strong
+            data-pl="Zakres projektu:"
+            data-en="Project scope:">
+            Zakres projektu:
+        </strong>
+
+
+        <ul>
+
+            <li
+                data-pl="przygotowanie, połączenie i oczyszczenie danych z World Happiness Report, World Bank oraz Our World in Data,"
+                data-en="collecting, combining, and cleaning data from the World Happiness Report, World Bank, and Our World in Data,">
+                przygotowanie, połączenie i oczyszczenie danych z World Happiness Report, World Bank oraz Our World in Data,
+            </li>
+
+            <li
+                data-pl="analiza statystyk opisowych i korelacji Pearsona,"
+                data-en="descriptive statistics and Pearson correlation analysis,">
+                analiza statystyk opisowych i korelacji Pearsona,
+            </li>
+
+            <li
+                data-pl="budowa modeli regresji liniowej,"
+                data-en="building linear regression models,">
+                budowa modeli regresji liniowej,
+            </li>
+
+            <li
+                data-pl="analiza zależności między poziomem szczęścia a czynnikami takimi jak PKB per capita, bezrobocie, inflacja, emisja CO₂, CPI i HDI,"
+                data-en="analyzing the relationships between happiness levels and factors such as GDP per capita, unemployment, inflation, CO₂ emissions, CPI, and HDI,">
+                analiza zależności między poziomem szczęścia a czynnikami takimi jak PKB per capita, bezrobocie, inflacja, emisja CO₂, CPI i HDI,
+            </li>
+
+            <li
+                data-pl="diagnostyka modeli z wykorzystaniem m.in. VIF i analizy reszt,"
+                data-en="model diagnostics, including VIF and residual analysis,">
+                diagnostyka modeli z wykorzystaniem m.in. VIF i analizy reszt,
+            </li>
+
+            <li
+                data-pl="wizualizacja wyników."
+                data-en="data visualization.">
+                wizualizacja wyników.
+            </li>
+
+        </ul>
+
+    </div>
+
+
+    <div
+        class="tools"
+        data-pl="Narzędzia: Python · pandas · statsmodels · matplotlib · seaborn"
+        data-en="Tools: Python · pandas · statsmodels · matplotlib · seaborn">
+        Narzędzia: Python · pandas · statsmodels · matplotlib · seaborn
+    </div>
+
+
+    <p
+        class="project-intro"
+        data-pl="Projekt został zrealizowany z wykorzystaniem AI jako wsparcia w programowaniu, analizie danych i rozwiązywaniu problemów technicznych."
+        data-en="The project was developed with AI assistance for programming, data analysis, and solving technical challenges.">
+        Projekt został zrealizowany z wykorzystaniem AI jako wsparcia w programowaniu, analizie danych i rozwiązywaniu problemów technicznych.
+    </p>
+
+
+    <!-- 01 VARIABLES -->
+
+    <section class="section">
+
+        <h2
+            class="section-title"
+            data-pl="01 — Zmienne wykorzystane w projekcie"
+            data-en="01 — Variables Used in the Project">
+            01 — Zmienne wykorzystane w projekcie
+        </h2>
+
+
+        <figure class="screenshot">
+
+            <img
+                src="../images/python/py1.png"
+                alt="Variables used in the project"
+                onclick="openLightbox(this.src, this.alt)">
+
+        </figure>
+
+    </section>
+
+
+    <!-- 02 DESCRIPTIVE STATISTICS -->
+
+    <section class="section">
+
+        <h2
+            class="section-title"
+            data-pl="02 — Statystyki opisowe"
+            data-en="02 — Descriptive Statistics">
+            02 — Statystyki opisowe
+        </h2>
+
+
+        <figure class="screenshot">
+
+            <img
+                src="../images/python/py2.png"
+                alt="Descriptive statistics"
+                onclick="openLightbox(this.src, this.alt)">
+
+        </figure>
+
+
+        <p
+            class="section-description"
+            data-pl="W latach 2021–2023 średni poziom szczęścia oraz HDI wzrosły w porównaniu z okresem 2014–2016, podczas gdy średnie bezrobocie spadło. Jednocześnie wzrosły średnie wartości PKB per capita i inflacji. Największym zróżnicowaniem między krajami charakteryzowały się PKB per capita, emisje CO₂ oraz inflacja, z widoczną obecnością wartości skrajnych."
+            data-en="Between 2021–2023, the average happiness level and HDI increased compared with 2014–2016, while average unemployment decreased. At the same time, average GDP per capita and inflation increased. GDP per capita, CO₂ emissions, and inflation showed the greatest variation across countries, with noticeable extreme values.">
+            W latach 2021–2023 średni poziom szczęścia oraz HDI wzrosły w porównaniu z okresem 2014–2016, podczas gdy średnie bezrobocie spadło. Jednocześnie wzrosły średnie wartości PKB per capita i inflacji. Największym zróżnicowaniem między krajami charakteryzowały się PKB per capita, emisje CO₂ oraz inflacja, z widoczną obecnością wartości skrajnych.
+        </p>
+
+    </section>
+
+
+    <!-- 03 CORRELATION ANALYSIS -->
+
+    <section class="section">
+
+        <h2
+            class="section-title"
+            data-pl="03 — Analiza korelacji"
+            data-en="03 — Correlation Analysis">
+            03 — Analiza korelacji
+        </h2>
+
+
+        <figure class="screenshot">
+
+            <img
+                src="../images/python/py3.png"
+                alt="Correlation analysis"
+                onclick="openLightbox(this.src, this.alt)">
+
+        </figure>
+
+
+        <p
+            class="section-description"
+            data-pl="W obu analizowanych okresach najsilniejsze dodatnie korelacje z poziomem szczęścia wykazywały HDI, PKB per capita oraz CPI. Bezrobocie i inflacja były ujemnie skorelowane ze szczęściem, przy czym zależność inflacji wyraźnie wzrosła w latach 2021–2023. Emisje CO₂ wykazywały praktycznie brak liniowej zależności ze szczęściem. Zaobserwowano również silne korelacje pomiędzy HDI, PKB per capita i CPI."
+            data-en="In both periods, HDI, GDP per capita, and CPI showed the strongest positive correlations with happiness levels. Unemployment and inflation were negatively correlated with happiness, with the relationship between inflation and happiness becoming notably stronger in 2021–2023. CO₂ emissions showed virtually no linear relationship with happiness. Strong correlations were also observed among HDI, GDP per capita, and CPI.">
+            W obu analizowanych okresach najsilniejsze dodatnie korelacje z poziomem szczęścia wykazywały HDI, PKB per capita oraz CPI. Bezrobocie i inflacja były ujemnie skorelowane ze szczęściem, przy czym zależność inflacji wyraźnie wzrosła w latach 2021–2023. Emisje CO₂ wykazywały praktycznie brak liniowej zależności ze szczęściem. Zaobserwowano również silne korelacje pomiędzy HDI, PKB per capita i CPI.
+        </p>
+
+    </section>
+
+
+    <!-- 04 LINEAR REGRESSION -->
+
+    <section class="section">
+
+        <h2
+            class="section-title"
+            data-pl="04 — Regresja liniowa"
+            data-en="04 — Linear Regression">
+            04 — Regresja liniowa
+        </h2>
+
+
+        <div class="regression-grid">
+
+
+            <figure class="screenshot">
+
+                <img
+                    src="../images/python/py4.png"
+                    alt="Linear regression results"
+                    onclick="openLightbox(this.src, this.alt)">
+
+            </figure>
+
+
+            <figure class="screenshot">
+
+                <img
+                    src="../images/python/py5.png"
+                    alt="Linear regression results"
+                    onclick="openLightbox(this.src, this.alt)">
+
+            </figure>
+
+
+        </div>
+
+
+        <p
+            class="section-description"
+            data-pl="Modele regresji wyjaśniały odpowiednio 77,9% zmienności poziomu szczęścia w latach 2014–2016 oraz 72,4% w latach 2021–2023. HDI był najsilniejszym i statystycznie istotnym predyktorem w obu okresach. Bezrobocie miało istotny ujemny związek ze szczęściem w obu modelach, natomiast inflacja stała się istotna statystycznie w drugim okresie. PKB per capita było istotne w pierwszym okresie, ale nie w latach 2021–2023."
+            data-en="The regression models explained 77.9% of the variation in happiness levels in 2014–2016 and 72.4% in 2021–2023. HDI was the strongest and statistically significant predictor in both periods. Unemployment had a significant negative relationship with happiness in both models, while inflation became statistically significant in the second period. GDP per capita was significant in the first period but not in 2021–2023.">
+            Modele regresji wyjaśniały odpowiednio 77,9% zmienności poziomu szczęścia w latach 2014–2016 oraz 72,4% w latach 2021–2023. HDI był najsilniejszym i statystycznie istotnym predyktorem w obu okresach. Bezrobocie miało istotny ujemny związek ze szczęściem w obu modelach, natomiast inflacja stała się istotna statystycznie w drugim okresie. PKB per capita było istotne w pierwszym okresie, ale nie w latach 2021–2023.
+        </p>
+
+    </section>
+
+
+    <!-- 05 CONCLUSIONS -->
+
+    <section class="section">
+
+        <h2
+            class="section-title"
+            data-pl="05 — Wnioski"
+            data-en="05 — Conclusions">
+            05 — Wnioski
+        </h2>
+
+
+        <p
+            class="section-description"
+            data-pl="Wyniki wskazują na wyraźny związek między poziomem rozwoju społecznego i gospodarczego a poziomem szczęścia. HDI pozostawał najbardziej stabilnym czynnikiem związanym z dobrostanem mieszkańców, podczas gdy znaczenie inflacji wzrosło w okresie 2021–2023. Jednocześnie wyniki pokazują, że zależności między czynnikami ekonomicznymi a szczęściem zmieniają się w czasie i nie wszystkie zmienne wykazują niezależny, statystycznie istotny związek z poziomem szczęścia."
+            data-en="The results indicate a clear relationship between the level of social and economic development and happiness. HDI remained the most consistent factor associated with well-being, while the importance of inflation increased in 2021–2023. At the same time, the results show that relationships between economic factors and happiness change over time, and not all variables have an independent, statistically significant relationship with happiness.">
+            Wyniki wskazują na wyraźny związek między poziomem rozwoju społecznego i gospodarczego a poziomem szczęścia. HDI pozostawał najbardziej stabilnym czynnikiem związanym z dobrostanem mieszkańców, podczas gdy znaczenie inflacji wzrosło w okresie 2021–2023. Jednocześnie wyniki pokazują, że zależności między czynnikami ekonomicznymi a szczęściem zmieniają się w czasie i nie wszystkie zmienne wykazują niezależny, statystycznie istotny związek z poziomem szczęścia.
+        </p>
+
+    </section>
+
+
+</div>
+
+
+<!-- LIGHTBOX -->
+
+<div
+    id="lightbox"
+    class="lightbox"
+    onclick="closeLightbox()">
+
+    <button
+        class="lightbox-close"
+        onclick="event.stopPropagation(); closeLightbox()">
+        ×
+    </button>
+
+    <img
+        id="lightbox-image"
+        src=""
+        alt=""
+        onclick="event.stopPropagation()">
+
+</div>
+
+
+<script>
+
+    function setLanguage(language) {
+
+        document.documentElement.lang = language;
+
+        const elements = document.querySelectorAll("[data-pl]");
+
+        elements.forEach(function(element) {
+
+            element.textContent =
+                element.getAttribute("data-" + language);
+
+        });
+
+
+        document
+            .getElementById("pl-btn")
+            .classList
+            .toggle("active", language === "pl");
+
+
+        document
+            .getElementById("en-btn")
+            .classList
+            .toggle("active", language === "en");
+
+
+        document.title =
+            language === "pl"
+                ? "Maja Przybyła | Python"
+                : "Maja Przybyła | Python";
+
+
+        localStorage.setItem("language", language);
+
+    }
+
+
+    function openLightbox(src, alt) {
+
+        const lightbox =
+            document.getElementById("lightbox");
+
+        const image =
+            document.getElementById("lightbox-image");
+
+        image.src = src;
+        image.alt = alt;
+
+        lightbox.style.display = "flex";
+
+    }
+
+
+    function closeLightbox() {
+
+        document
+            .getElementById("lightbox")
+            .style.display = "none";
+
+    }
+
+
+    const savedLanguage =
+        localStorage.getItem("language") || "pl";
+
+    setLanguage(savedLanguage);
+
+</script>
+
+
+</body>
+
+</html>
