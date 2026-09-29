@@ -251,21 +251,36 @@
         <div class="logo">Maja Przybyła</div>
 
         <div>
-            <a href="#projects" data-pl="Projekty" data-en="Projects">Projekty</a>
 
-            <a href="#about" data-pl="O mnie" data-en="About">O mnie</a>
+            <a href="#projects"
+               data-pl="Projekty"
+               data-en="Projects">
+                Projekty
+            </a>
+
+            <a href="#about"
+               data-pl="O mnie"
+               data-en="About">
+                O mnie
+            </a>
 
             <span class="language-switch">
-                <button id="pl-btn" class="active" onclick="setLanguage('pl')">
+
+                <button id="pl-btn"
+                        class="active"
+                        onclick="setLanguage('pl')">
                     PL
                 </button>
 
                 <span>|</span>
 
-                <button id="en-btn" onclick="setLanguage('en')">
+                <button id="en-btn"
+                        onclick="setLanguage('en')">
                     EN
                 </button>
+
             </span>
+
         </div>
 
     </nav>
@@ -316,12 +331,14 @@
 
             <!-- POWER BI -->
 
-            <a href="projects/powerbi-employment.html"
+            <a href="projects/powerbi.html"
                class="project">
 
                 <div>
 
-                    <div class="project-type">Power BI</div>
+                    <div class="project-type">
+                        Power BI
+                    </div>
 
                     <h3
                         data-pl="Analiza danych w Power BI"
@@ -351,7 +368,9 @@
 
                 <div>
 
-                    <div class="project-type">Excel</div>
+                    <div class="project-type">
+                        Excel
+                    </div>
 
                     <h3
                         data-pl="Analiza w Excelu"
@@ -381,7 +400,9 @@
 
                 <div>
 
-                    <div class="project-type">SQL</div>
+                    <div class="project-type">
+                        SQL
+                    </div>
 
                     <h3
                         data-pl="Analiza danych w SQL"
@@ -412,7 +433,9 @@
 
                 <div>
 
-                    <div class="project-type">Python</div>
+                    <div class="project-type">
+                        Python
+                    </div>
 
                     <h3
                         data-pl="Analiza danych w Pythonie"
@@ -506,13 +529,13 @@
 
             document.documentElement.lang = language;
 
-            const elements = document.querySelectorAll("[data-pl]");
+            const elements =
+                document.querySelectorAll("[data-pl]");
 
             elements.forEach(function(element) {
 
-                element.textContent = element.getAttribute(
-                    "data-" + language
-                );
+                element.textContent =
+                    element.getAttribute("data-" + language);
 
             });
 
@@ -520,10 +543,16 @@
             // Update active language button
 
             document.getElementById("pl-btn")
-                .classList.toggle("active", language === "pl");
+                .classList.toggle(
+                    "active",
+                    language === "pl"
+                );
 
             document.getElementById("en-btn")
-                .classList.toggle("active", language === "en");
+                .classList.toggle(
+                    "active",
+                    language === "en"
+                );
 
 
             // Update page title
@@ -543,7 +572,10 @@
 
             // Remember language choice
 
-            localStorage.setItem("language", language);
+            localStorage.setItem(
+                "language",
+                language
+            );
         }
 
 
