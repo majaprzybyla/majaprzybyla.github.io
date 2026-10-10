@@ -1,0 +1,516 @@
+```html
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Maja Przybyła | Excel</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f6f3;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 50px 25px 80px;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .back-link {
+            color: #555;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            color: #222;
+        }
+
+        .language-switch {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 14px;
+        }
+
+        .language-switch button {
+            border: none;
+            background: none;
+            padding: 0;
+            cursor: pointer;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .language-switch button.active {
+            color: #222;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 42px;
+            line-height: 1.2;
+            margin: 0 0 20px;
+        }
+
+        .project-intro {
+            max-width: 850px;
+            color: #555;
+            font-size: 17px;
+            margin-bottom: 25px;
+        }
+
+        .tools {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 70px;
+        }
+
+        .section {
+            margin-bottom: 75px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            line-height: 1.4;
+            margin: 0 0 25px;
+        }
+
+        .screenshot {
+            margin: 0;
+        }
+
+        .screenshot img {
+            display: block;
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+            border-radius: 6px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease;
+        }
+
+        .screenshot img:hover {
+            transform: translateY(-2px);
+        }
+
+        .section-description {
+            max-width: 850px;
+            color: #555;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        /* IMAGE LIGHTBOX */
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.88);
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .lightbox img {
+            max-width: 95vw;
+            max-height: 90vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 35px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        @media (max-width: 700px) {
+            .container {
+                padding: 30px 18px 60px;
+            }
+
+            .top-bar {
+                margin-bottom: 45px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .project-intro {
+                font-size: 16px;
+            }
+
+            .tools {
+                margin-bottom: 55px;
+            }
+
+            .section {
+                margin-bottom: 60px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+
+            .section-description {
+                font-size: 15px;
+            }
+
+            .lightbox {
+                padding: 15px;
+            }
+
+            .lightbox-close {
+                top: 10px;
+                right: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="container">
+
+        <!-- NAVIGATION -->
+
+        <div class="top-bar">
+
+            <a href="../index.html"
+               class="back-link"
+               data-pl="← Powrót do strony głównej"
+               data-en="← Back to homepage">
+                ← Powrót do strony głównej
+            </a>
+
+            <div class="language-switch">
+
+                <button id="pl-btn"
+                        class="active"
+                        onclick="setLanguage('pl')">
+                    PL
+                </button>
+
+                <span>|</span>
+
+                <button id="en-btn"
+                        onclick="setLanguage('en')">
+                    EN
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- PROJECT INTRODUCTION -->
+
+        <header>
+
+            <h1
+                data-pl="Analiza danych sprzedażowych w Excelu"
+                data-en="Excel Sales Data Analysis">
+                Analiza danych sprzedażowych w Excelu
+            </h1>
+
+            <div class="project-intro"
+                 data-pl="Analiza ponad 300 zamówień internetowego sklepu z kosmetykami do makijażu z okresu od stycznia do września 2026 roku. Projekt obejmuje kontrolę jakości danych, wyszukiwanie informacji z wykorzystaniem różnych funkcji Excela, klasyfikację zamówień, filtrowanie i sortowanie danych oraz analizę wyników sprzedaży za pomocą tabel przestawnych."
+                 data-en="Analysis of over 300 orders from an online makeup cosmetics store covering January to September 2026. The project includes data quality checks, information retrieval using various Excel lookup functions, order classification, data filtering and sorting, and sales analysis using PivotTables.">
+                Analiza ponad 300 zamówień internetowego sklepu z kosmetykami do makijażu z okresu od stycznia do września 2026 roku. Projekt obejmuje kontrolę jakości danych, wyszukiwanie informacji z wykorzystaniem różnych funkcji Excela, klasyfikację zamówień, filtrowanie i sortowanie danych oraz analizę wyników sprzedaży za pomocą tabel przestawnych.
+            </div>
+
+            <div class="tools"
+                 data-pl="Narzędzia: Excel · XLOOKUP · VLOOKUP · INDEX · MATCH · HLOOKUP · IF · IFS · FILTER · SORT · SORTBY · UNIQUE · Tabele przestawne"
+                 data-en="Tools: Excel · XLOOKUP · VLOOKUP · INDEX · MATCH · HLOOKUP · IF · IFS · FILTER · SORT · SORTBY · UNIQUE · PivotTables">
+                Narzędzia: Excel · XLOOKUP · VLOOKUP · INDEX · MATCH · HLOOKUP · IF · IFS · FILTER · SORT · SORTBY · UNIQUE · Tabele przestawne
+            </div>
+
+        </header>
+
+        <!-- 01 — DATA QUALITY -->
+
+        <section class="section">
+
+            <h2 class="section-title"
+                data-pl="01 — Kontrola jakości danych"
+                data-en="01 — Data Quality Checks">
+                01 — Kontrola jakości danych
+            </h2>
+
+            <figure class="screenshot">
+                <img src="../images/excel/ex1.png"
+                     alt="Kontrola brakujących wartości w Excelu"
+                     onclick="openLightbox(this.src, this.alt)">
+            </figure>
+
+            <p class="section-description"
+               data-pl="Kontrola kompletności danych poprzez wyróżnienie pustych komórek oraz dodanie kolumny statusu, która automatycznie identyfikuje wiersze zawierające braki danych."
+               data-en="Data completeness checks using highlighted blank cells and an additional status column that automatically identifies rows containing missing values.">
+                Kontrola kompletności danych poprzez wyróżnienie pustych komórek oraz dodanie kolumny statusu, która automatycznie identyfikuje wiersze zawierające braki danych.
+            </p>
+
+        </section>
+
+        <!-- 02 — LOOKUP FUNCTIONS -->
+
+        <section class="section">
+
+            <h2 class="section-title"
+                data-pl="02 — Funkcje wyszukiwania i odwołań"
+                data-en="02 — Lookup and Reference Functions">
+                02 — Funkcje wyszukiwania i odwołań
+            </h2>
+
+            <figure class="screenshot">
+                <img src="../images/excel/ex2.png"
+                     alt="Funkcje XLOOKUP, VLOOKUP, INDEX i MATCH"
+                     onclick="openLightbox(this.src, this.alt)">
+            </figure>
+
+            <p class="section-description"
+               data-pl="Wykorzystanie funkcji XLOOKUP, VLOOKUP, INDEX i MATCH do wyszukiwania nazw produktów, kategorii i cen jednostkowych na podstawie identyfikatorów produktów. Dodatkowo zastosowano obsługę nieodnalezionych identyfikatorów oraz połączenie INDEX i MATCH do wyszukiwania ceny konkretnego produktu."
+               data-en="Using XLOOKUP, VLOOKUP, INDEX, and MATCH to retrieve product names, categories, and unit prices based on product IDs. The analysis also includes handling unmatched IDs and combining INDEX with MATCH to retrieve the price of a specific product.">
+                Wykorzystanie funkcji XLOOKUP, VLOOKUP, INDEX i MATCH do wyszukiwania nazw produktów, kategorii i cen jednostkowych na podstawie identyfikatorów produktów. Dodatkowo zastosowano obsługę nieodnalezionych identyfikatorów oraz połączenie INDEX i MATCH do wyszukiwania ceny konkretnego produktu.
+            </p>
+
+        </section>
+
+        <!-- 03 — HLOOKUP -->
+
+        <section class="section">
+
+            <h2 class="section-title"
+                data-pl="03 — Wyszukiwanie poziome (HLOOKUP)"
+                data-en="03 — Horizontal Lookup (HLOOKUP)">
+                03 — Wyszukiwanie poziome (HLOOKUP)
+            </h2>
+
+            <figure class="screenshot">
+                <img src="../images/excel/ex3.png"
+                     alt="Wyszukiwanie miesięcznych celów za pomocą HLOOKUP"
+                     onclick="openLightbox(this.src, this.alt)">
+            </figure>
+
+            <p class="section-description"
+               data-pl="Wykorzystanie funkcji HLOOKUP do pobierania miesięcznych celów sprzedażowych i celów dotyczących liczby zamówień na podstawie skrótów nazw miesięcy."
+               data-en="Using HLOOKUP to retrieve monthly sales targets and order targets based on abbreviated month names.">
+                Wykorzystanie funkcji HLOOKUP do pobierania miesięcznych celów sprzedażowych i celów dotyczących liczby zamówień na podstawie skrótów nazw miesięcy.
+            </p>
+
+        </section>
+
+        <!-- 04 — LOGICAL FUNCTIONS -->
+
+        <section class="section">
+
+            <h2 class="section-title"
+                data-pl="04 — Funkcje logiczne (IF, IFS)"
+                data-en="04 — Logical Functions (IF, IFS)">
+                04 — Funkcje logiczne (IF, IFS)
+            </h2>
+
+            <figure class="screenshot">
+                <img src="../images/excel/ex4.png"
+                     alt="Klasyfikacja zamówień przy użyciu IF i IFS"
+                     onclick="openLightbox(this.src, this.alt)">
+            </figure>
+
+            <p class="section-description"
+               data-pl="Klasyfikacja zamówień na podstawie ich wartości z wykorzystaniem funkcji IF i IFS. Zamówienia przypisano do kategorii wielkości oraz poziomów sprzedaży zgodnie z określonymi progami wartości."
+               data-en="Classifying orders by value using the IF and IFS functions. Orders are assigned to size categories and sales levels according to predefined value thresholds.">
+                Klasyfikacja zamówień na podstawie ich wartości z wykorzystaniem funkcji IF i IFS. Zamówienia przypisano do kategorii wielkości oraz poziomów sprzedaży zgodnie z określonymi progami wartości.
+            </p>
+
+        </section>
+
+        <!-- 05 — FILTERING AND SORTING -->
+
+        <section class="section">
+
+            <h2 class="section-title"
+                data-pl="05 — Filtrowanie, sortowanie i tablice dynamiczne"
+                data-en="05 — Filtering, Sorting and Dynamic Arrays">
+                05 — Filtrowanie, sortowanie i tablice dynamiczne
+            </h2>
+
+            <figure class="screenshot">
+                <img src="../images/excel/ex5.png"
+                     alt="Dynamiczne filtrowanie, sortowanie i unikalne wartości w Excelu"
+                     onclick="openLightbox(this.src, this.alt)">
+            </figure>
+
+            <p class="section-description"
+               data-pl="Wykorzystanie funkcji FILTER, SORT, SORTBY i UNIQUE do tworzenia dynamicznych zestawień sprzedaży. Przygotowano widoki danych według kategorii produktów, statusu zamówienia, kanału sprzedaży, daty i wartości transakcji, a także posortowane zestawienia zamówień oraz listę unikalnych miast."
+               data-en="Using FILTER, SORT, SORTBY, and UNIQUE to create dynamic sales summaries. The resulting views organize data by product category, order status, sales channel, date, and transaction value, alongside sorted order listings and a list of unique cities.">
+                Wykorzystanie funkcji FILTER, SORT, SORTBY i UNIQUE do tworzenia dynamicznych zestawień sprzedaży. Przygotowano widoki danych według kategorii produktów, statusu zamówienia, kanału sprzedaży, daty i wartości transakcji, a także posortowane zestawienia zamówień oraz listę unikalnych miast.
+            </p>
+
+        </section>
+
+        <!-- 06 — PIVOTTABLES: SALES AND ORDERS -->
+
+        <section class="section">
+
+            <h2 class="section-title"
+                data-pl="06 — Tabele przestawne: analiza sprzedaży i zamówień"
+                data-en="06 — PivotTables: Sales and Order Analysis">
+                06 — Tabele przestawne: analiza sprzedaży i zamówień
+            </h2>
+
+            <figure class="screenshot">
+                <img src="../images/excel/ex6.png"
+                     alt="Tabele przestawne przedstawiające sprzedaż i zamówienia"
+                     onclick="openLightbox(this.src, this.alt)">
+            </figure>
+
+            <p class="section-description"
+               data-pl="Analiza liczby zamówień i wartości sprzedaży według kategorii produktów, wartości sprzedaży według miasta i kanału sprzedaży oraz średniej wartości zamówienia w podziale na kategorię produktu i metodę płatności."
+               data-en="Analysis of order counts and sales value by product category, sales value by city and sales channel, and average order value by product category and payment method.">
+                Analiza liczby zamówień i wartości sprzedaży według kategorii produktów, wartości sprzedaży według miasta i kanału sprzedaży oraz średniej wartości zamówienia w podziale na kategorię produktu i metodę płatności.
+            </p>
+
+        </section>
+
+        <!-- 07 — PIVOTTABLES: PRODUCT AND CHANNEL ANALYSIS -->
+
+        <section class="section">
+
+            <h2 class="section-title"
+                data-pl="07 — Tabele przestawne: produkty i kanały sprzedaży"
+                data-en="07 — PivotTables: Product and Channel Analysis">
+                07 — Tabele przestawne: produkty i kanały sprzedaży
+            </h2>
+
+            <figure class="screenshot">
+                <img src="../images/excel/ex7.png"
+                     alt="Tabele przestawne przedstawiające produkty i kanały sprzedaży"
+                     onclick="openLightbox(this.src, this.alt)">
+            </figure>
+
+            <p class="section-description"
+               data-pl="Analiza łącznej liczby sprzedanych sztuk według produktów, liczby zamówień według kategorii produktów i kanału sprzedaży oraz wartości sprzedaży według miasta i kategorii z uwzględnieniem wyłącznie zamówień online."
+               data-en="Analysis of total units sold by product, order counts by product category and sales channel, and sales value by city and category, restricted to online orders.">
+                Analiza łącznej liczby sprzedanych sztuk według produktów, liczby zamówień według kategorii produktów i kanału sprzedaży oraz wartości sprzedaży według miasta i kategorii z uwzględnieniem wyłącznie zamówień online.
+            </p>
+
+        </section>
+
+        <!-- 08 — PIVOTTABLES: MONTHLY SALES TRENDS -->
+
+        <section class="section">
+
+            <h2 class="section-title"
+                data-pl="08 — Tabele przestawne: trendy sprzedaży w czasie"
+                data-en="08 — PivotTables: Monthly Sales Trends">
+                08 — Tabele przestawne: trendy sprzedaży w czasie
+            </h2>
+
+            <figure class="screenshot">
+                <img src="../images/excel/ex8.png"
+                     alt="Tabele przestawne przedstawiające miesięczne trendy sprzedaży"
+                     onclick="openLightbox(this.src, this.alt)">
+            </figure>
+
+            <p class="section-description"
+               data-pl="Analiza liczby zrealizowanych zamówień według miasta oraz trendów sprzedaży w czasie. Zestawienia przedstawiają wartość sprzedaży według miesięcy oraz w podziale na kategorię produktów i miesiąc."
+               data-en="Analysis of completed order counts by city and sales trends over time. The PivotTables present sales value by month and a breakdown of sales by product category and month.">
+                Analiza liczby zrealizowanych zamówień według miasta oraz trendów sprzedaży w czasie. Zestawienia przedstawiają wartość sprzedaży według miesięcy oraz w podziale na kategorię produktów i miesiąc.
+            </p>
+
+        </section>
+
+    </main>
+
+    <!-- IMAGE LIGHTBOX -->
+
+    <div id="lightbox"
+         class="lightbox"
+         onclick="closeLightbox()">
+
+        <button class="lightbox-close"
+                aria-label="Close image"
+                onclick="event.stopPropagation(); closeLightbox();">
+            &times;
+        </button>
+
+        <img id="lightbox-image" src="" alt="">
+
+    </div>
+
+    <!-- LANGUAGE SWITCHING AND LIGHTBOX -->
+
+    <script>
+
+        function setLanguage(language) {
+
+            document.documentElement.lang = language;
+
+            const elements = document.querySelectorAll("[data-pl]");
+
+            elements.forEach(function(element) {
+                element.textContent = element.getAttribute("data-" + language);
+            });
+
+            document.getElementById("pl-btn")
+                .classList.toggle("active", language === "pl");
+
+            document.getElementById("en-btn")
+                .classList.toggle("active", language === "en");
+
+            localStorage.setItem("language", language);
+        }
+
+        function openLightbox(src, alt) {
+
+            const lightbox = document.getElementById("lightbox");
+            const image = document.getElementById("lightbox-image");
+
+            image.src = src;
+            image.alt = alt;
+            lightbox.style.display = "flex";
+        }
+
+        function closeLightbox() {
+            document.getElementById("lightbox").style.display = "none";
+        }
+
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Escape") {
+                closeLightbox();
+            }
+        });
+
+        const savedLanguage = localStorage.getItem("language") || "pl";
+        setLanguage(savedLanguage);
+
+    </script>
+
+</body>
+</html>
+```
