@@ -1,0 +1,421 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Maja Przybyła | HEIC to JPG Converter</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f6f3;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 50px 25px 80px;
+        }
+
+        /* TOP BAR */
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .back-link {
+            color: #555;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            color: #222;
+        }
+
+        .language-switch {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 14px;
+        }
+
+        .language-switch button {
+            border: none;
+            background: none;
+            padding: 0;
+            cursor: pointer;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .language-switch button.active {
+            color: #222;
+            font-weight: bold;
+        }
+
+        /* HEADER */
+
+        h1 {
+            font-size: 42px;
+            line-height: 1.2;
+            margin-bottom: 25px;
+        }
+
+        .project-intro {
+            max-width: 800px;
+            color: #555;
+            font-size: 17px;
+            margin-bottom: 25px;
+        }
+
+        .project-intro p {
+            margin-bottom: 20px;
+        }
+
+        .project-intro ul {
+            padding-left: 22px;
+            margin-top: 10px;
+        }
+
+        .project-intro li {
+            margin-bottom: 6px;
+        }
+
+        .tools {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 70px;
+        }
+
+        /* SECTIONS */
+
+        .section {
+            margin-bottom: 70px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            margin-bottom: 25px;
+        }
+
+        /* SCREENSHOTS */
+
+        .screenshot {
+            margin: 0 0 40px;
+        }
+
+        .screenshot img {
+            display: block;
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+            border-radius: 6px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease;
+        }
+
+        .screenshot img:hover {
+            transform: translateY(-2px);
+        }
+
+        /* LIGHTBOX */
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.88);
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .lightbox img {
+            max-width: 95vw;
+            max-height: 90vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 35px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+            .container {
+                padding: 30px 18px 60px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- TOP BAR -->
+
+    <div class="top-bar">
+
+        <a
+            href="python.html"
+            class="back-link"
+            data-pl="← Powrót do projektów"
+            data-en="← Back to projects">
+            ← Powrót do projektów
+        </a>
+
+        <div class="language-switch">
+
+            <button
+                id="pl-btn"
+                onclick="setLanguage('pl')">
+                PL
+            </button>
+
+            <span>|</span>
+
+            <button
+                id="en-btn"
+                onclick="setLanguage('en')">
+                EN
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- PROJECT INTRO -->
+
+    <h1
+        data-pl="Konwerter HEIC na JPG – Automatyczne przetwarzanie obrazów"
+        data-en="HEIC to JPG Converter – Batch Image Processing Automation">
+        Konwerter HEIC na JPG – Automatyczne przetwarzanie obrazów
+    </h1>
+
+
+    <div class="project-intro">
+
+        <p
+            data-pl="Skrypt automatyzujący napisany w Pythonie, umożliwiający konwersję wielu obrazów w formacie HEIC do formatu JPEG w ramach jednej operacji wsadowej."
+            data-en="Developed a Python automation script to convert multiple HEIC images into JPEG format in a single batch operation.">
+            Skrypt automatyzujący napisany w Pythonie, umożliwiający konwersję wielu obrazów w formacie HEIC do formatu JPEG w ramach jednej operacji wsadowej.
+        </p>
+
+        <p
+            data-pl="Aplikacja przetwarza wszystkie pliki HEIC znajdujące się w określonym folderze wejściowym, konwertuje obrazy do przestrzeni barw RGB, a następnie eksportuje je jako pliki JPEG wysokiej jakości do osobnego folderu wyjściowego."
+            data-en="The application processes all HEIC files within a specified input directory, converts images to RGB format and exports them as high-quality JPEG files to a separate output directory.">
+            Aplikacja przetwarza wszystkie pliki HEIC znajdujące się w określonym folderze wejściowym, konwertuje obrazy do przestrzeni barw RGB, a następnie eksportuje je jako pliki JPEG wysokiej jakości do osobnego folderu wyjściowego.
+        </p>
+
+        <strong
+            data-pl="Główne funkcjonalności:"
+            data-en="Key features:">
+            Główne funkcjonalności:
+        </strong>
+
+        <ul>
+
+            <li
+                data-pl="Wsadowa konwersja wielu obrazów HEIC."
+                data-en="Batch conversion of multiple HEIC images.">
+                Wsadowa konwersja wielu obrazów HEIC.
+            </li>
+
+            <li
+                data-pl="Automatyczne tworzenie folderu wyjściowego."
+                data-en="Automatic creation of the output directory.">
+                Automatyczne tworzenie folderu wyjściowego.
+            </li>
+
+            <li
+                data-pl="Zachowanie oryginalnych nazw plików."
+                data-en="Preservation of original filenames.">
+                Zachowanie oryginalnych nazw plików.
+            </li>
+
+            <li
+                data-pl="Konwersja przestrzeni barw do RGB w celu zapewnienia zgodności z formatem JPEG."
+                data-en="RGB color mode conversion for JPEG compatibility.">
+                Konwersja przestrzeni barw do RGB w celu zapewnienia zgodności z formatem JPEG.
+            </li>
+
+            <li
+                data-pl="Eksport plików JPEG w wysokiej jakości (95%)."
+                data-en="High-quality JPEG export (95% quality).">
+                Eksport plików JPEG w wysokiej jakości (95%).
+            </li>
+
+            <li
+                data-pl="Automatyzacja obsługi plików i raportowanie statusu konwersji."
+                data-en="Automated file handling and conversion status reporting.">
+                Automatyzacja obsługi plików i raportowanie statusu konwersji.
+            </li>
+
+        </ul>
+
+        <strong
+            data-pl="Cel projektu:"
+            data-en="Objective:">
+            Cel projektu:
+        </strong>
+
+        <p
+            data-pl="Uproszczenie konwersji formatów obrazów z wykorzystaniem automatyzacji w Pythonie, ograniczenie powtarzalnej pracy manualnej oraz zwiększenie efektywności codziennych procesów."
+            data-en="Simplify image format conversion through Python automation, reducing repetitive manual work and improving workflow efficiency.">
+            Uproszczenie konwersji formatów obrazów z wykorzystaniem automatyzacji w Pythonie, ograniczenie powtarzalnej pracy manualnej oraz zwiększenie efektywności codziennych procesów.
+        </p>
+
+    </div>
+
+
+    <div
+        class="tools"
+        data-pl="Technologie: Python · Pillow · pillow-heif"
+        data-en="Technologies: Python · Pillow · pillow-heif">
+        Technologie: Python · Pillow · pillow-heif
+    </div>
+
+
+    <!-- SCREENSHOT -->
+
+    <section class="section">
+
+        <h2
+            class="section-title"
+            data-pl="Podgląd projektu"
+            data-en="Project Preview">
+            Podgląd projektu
+        </h2>
+
+        <figure class="screenshot">
+
+            <img
+                src="../images/python/converter1.png"
+                alt="HEIC to JPG Converter project preview"
+                onclick="openLightbox(this.src, this.alt)">
+
+        </figure>
+
+    </section>
+
+</div>
+
+
+<!-- LIGHTBOX -->
+
+<div
+    id="lightbox"
+    class="lightbox"
+    onclick="closeLightbox()">
+
+    <button
+        class="lightbox-close"
+        onclick="event.stopPropagation(); closeLightbox()">
+        ×
+    </button>
+
+    <img
+        id="lightbox-image"
+        src=""
+        alt=""
+        onclick="event.stopPropagation()">
+
+</div>
+
+
+<script>
+
+    function setLanguage(language) {
+
+        document.documentElement.lang = language;
+
+        const elements = document.querySelectorAll("[data-pl]");
+
+        elements.forEach(function(element) {
+
+            element.textContent =
+                element.getAttribute("data-" + language);
+
+        });
+
+        document
+            .getElementById("pl-btn")
+            .classList
+            .toggle("active", language === "pl");
+
+        document
+            .getElementById("en-btn")
+            .classList
+            .toggle("active", language === "en");
+
+        localStorage.setItem("language", language);
+
+    }
+
+
+    function openLightbox(src, alt) {
+
+        const lightbox =
+            document.getElementById("lightbox");
+
+        const image =
+            document.getElementById("lightbox-image");
+
+        image.src = src;
+        image.alt = alt;
+
+        lightbox.style.display = "flex";
+
+    }
+
+
+    function closeLightbox() {
+
+        document
+            .getElementById("lightbox")
+            .style.display = "none";
+
+    }
+
+
+    const savedLanguage =
+        localStorage.getItem("language") || "pl";
+
+    setLanguage(savedLanguage);
+
+</script>
+
+</body>
+</html>
