@@ -1,0 +1,340 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Python | Maja Przybyła</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f6f3;
+            color: #202020;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 50px 30px 90px;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 65px;
+        }
+
+        .back-link {
+            color: #555;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            opacity: 0.6;
+        }
+
+        .language-switch {
+            font-size: 14px;
+        }
+
+        .language-switch button {
+            background: none;
+            border: none;
+            font: inherit;
+            cursor: pointer;
+            color: #999;
+            padding: 0;
+        }
+
+        .language-switch button.active {
+            color: #202020;
+            font-weight: 600;
+        }
+
+        .language-switch span {
+            color: #ccc;
+            margin: 0 5px;
+        }
+
+        h1 {
+            font-size: 42px;
+            letter-spacing: -1.5px;
+            margin-bottom: 45px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .projects {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .project {
+            display: block;
+            background: white;
+            border: 1px solid #deddd8;
+            padding: 28px 32px;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .project:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.07);
+        }
+
+        .project h3 {
+            font-size: 21px;
+            letter-spacing: -0.4px;
+            margin-bottom: 10px;
+        }
+
+        .project p {
+            color: #666;
+            font-size: 15px;
+            margin-bottom: 16px;
+            max-width: 750px;
+        }
+
+        .project-tools {
+            font-size: 13px;
+            color: #888;
+        }
+
+        .project-link {
+            color: #A732CF;
+            font-size: 14px;
+            margin-top: 18px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 700px) {
+            .container {
+                padding: 30px 6% 70px;
+            }
+
+            .top-bar {
+                margin-bottom: 50px;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            .project {
+                padding: 24px;
+            }
+
+            .project h3 {
+                font-size: 19px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="container">
+
+        <div class="top-bar">
+
+            <a href="../index.html"
+               class="back-link"
+               data-pl="← Powrót do strony głównej"
+               data-en="← Back to homepage">
+                ← Powrót do strony głównej
+            </a>
+
+            <span class="language-switch">
+                <button id="pl-btn"
+                        class="active"
+                        onclick="setLanguage('pl')">
+                    PL
+                </button>
+
+                <span>|</span>
+
+                <button id="en-btn"
+                        onclick="setLanguage('en')">
+                    EN
+                </button>
+            </span>
+
+        </div>
+
+        <h1>Python</h1>
+
+        <div class="section-title"
+             data-pl="Projekty"
+             data-en="Projects">
+            Projekty
+        </div>
+
+        <div class="projects">
+
+            <!-- WORLD HAPPINESS REPORT -->
+
+            <a href="python-analysis.html" class="project">
+
+                <h3
+                    data-pl="Analiza World Happiness Report"
+                    data-en="World Happiness Report Analysis">
+                    Analiza World Happiness Report
+                </h3>
+
+                <p
+                    data-pl="Analiza danych dotyczących szczęścia, rozwoju gospodarczego i czynników społecznych. Porównanie wybranych wskaźników oraz analiza zależności statystycznych."
+                    data-en="Analysis of happiness, economic development, and social indicators. Comparison of selected metrics and statistical analysis of relationships.">
+                    Analiza danych dotyczących szczęścia, rozwoju gospodarczego i czynników społecznych. Porównanie wybranych wskaźników oraz analiza zależności statystycznych.
+                </p>
+
+                <div class="project-tools">
+                    Python · pandas · NumPy · Statistical Analysis
+                </div>
+
+                <div class="project-link"
+                     data-pl="Zobacz projekt →"
+                     data-en="View project →">
+                    Zobacz projekt →
+                </div>
+
+            </a>
+
+            <!-- AI ANALYST -->
+
+            <a href="python-ai-analyst.html" class="project">
+
+                <h3
+                    data-pl="AI Analyst – Asystent analityczny oparty na AI"
+                    data-en="AI Analyst – AI-Powered Data Analysis Assistant">
+                    AI Analyst – Asystent analityczny oparty na AI
+                </h3>
+
+                <p
+                    data-pl="Interaktywna aplikacja wykorzystująca AI do analizy zbiorów danych, generowania statystyk opisowych i formułowania wniosków w języku naturalnym."
+                    data-en="An interactive application using AI to analyze datasets, generate descriptive statistics, and produce natural-language insights.">
+                    Interaktywna aplikacja wykorzystująca AI do analizy zbiorów danych, generowania statystyk opisowych i formułowania wniosków w języku naturalnym.
+                </p>
+
+                <div class="project-tools">
+                    Python · Streamlit · Pandas · OpenAI API
+                </div>
+
+                <div class="project-link"
+                     data-pl="Zobacz projekt →"
+                     data-en="View project →">
+                    Zobacz projekt →
+                </div>
+
+            </a>
+
+            <!-- SURVEY GENERATOR -->
+
+            <a href="python-survey-generator.html" class="project">
+
+                <h3
+                    data-pl="Generator syntetycznych danych ankietowych"
+                    data-en="Synthetic Survey Data Generator – Python Automation">
+                    Generator syntetycznych danych ankietowych
+                </h3>
+
+                <p
+                    data-pl="Skrypt automatyzujący generowanie syntetycznych odpowiedzi ankietowych z wykorzystaniem losowania ważonego, konfigurowalnych parametrów demograficznych i automatycznych żądań HTTP."
+                    data-en="A Python automation script that generates synthetic survey responses using weighted random sampling, configurable demographic parameters, and automated HTTP requests.">
+                    Skrypt automatyzujący generowanie syntetycznych odpowiedzi ankietowych z wykorzystaniem losowania ważonego, konfigurowalnych parametrów demograficznych i automatycznych żądań HTTP.
+                </p>
+
+                <div class="project-tools">
+                    Python · Requests · Randomization · Data Simulation
+                </div>
+
+                <div class="project-link"
+                     data-pl="Zobacz projekt →"
+                     data-en="View project →">
+                    Zobacz projekt →
+                </div>
+
+            </a>
+
+            <!-- HEIC CONVERTER -->
+
+            <a href="python-heic-converter.html" class="project">
+
+                <h3
+                    data-pl="Konwerter HEIC na JPG – Automatyczne przetwarzanie obrazów"
+                    data-en="HEIC to JPG Converter – Batch Image Processing Automation">
+                    Konwerter HEIC na JPG – Automatyczne przetwarzanie obrazów
+                </h3>
+
+                <p
+                    data-pl="Skrypt automatyzujący konwersję wielu plików HEIC do formatu JPG w jednym procesie, z automatycznym zarządzaniem folderami i wysoką jakością eksportu."
+                    data-en="A Python script that automates the batch conversion of HEIC images into JPG files, with automatic folder handling and high-quality export.">
+                    Skrypt automatyzujący konwersję wielu plików HEIC do formatu JPG w jednym procesie, z automatycznym zarządzaniem folderami i wysoką jakością eksportu.
+                </p>
+
+                <div class="project-tools">
+                    Python · Pillow · pillow-heif
+                </div>
+
+                <div class="project-link"
+                     data-pl="Zobacz projekt →"
+                     data-en="View project →">
+                    Zobacz projekt →
+                </div>
+
+            </a>
+
+        </div>
+
+    </main>
+
+    <script>
+
+        function setLanguage(language) {
+
+            document.documentElement.lang = language;
+
+            const elements =
+                document.querySelectorAll("[data-pl]");
+
+            elements.forEach(function(element) {
+                element.textContent =
+                    element.getAttribute("data-" + language);
+            });
+
+            document.getElementById("pl-btn")
+                .classList.toggle("active", language === "pl");
+
+            document.getElementById("en-btn")
+                .classList.toggle("active", language === "en");
+
+            localStorage.setItem("language", language);
+        }
+
+        const savedLanguage =
+            localStorage.getItem("language") || "pl";
+
+        setLanguage(savedLanguage);
+
+    </script>
+
+</body>
+</html>
