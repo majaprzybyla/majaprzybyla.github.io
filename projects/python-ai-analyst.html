@@ -1,0 +1,419 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Maja Przybyła | AI Analyst</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f6f3;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 50px 25px 80px;
+        }
+
+        /* TOP BAR */
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .back-link {
+            color: #555;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            color: #222;
+        }
+
+        .language-switch {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 14px;
+        }
+
+        .language-switch button {
+            border: none;
+            background: none;
+            padding: 0;
+            cursor: pointer;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .language-switch button.active {
+            color: #222;
+            font-weight: bold;
+        }
+
+        /* HEADER */
+
+        h1 {
+            font-size: 42px;
+            line-height: 1.2;
+            margin-bottom: 25px;
+        }
+
+        .project-intro {
+            max-width: 800px;
+            color: #555;
+            font-size: 17px;
+            margin-bottom: 25px;
+        }
+
+        .project-intro p {
+            margin-bottom: 20px;
+        }
+
+        .project-intro ul {
+            padding-left: 22px;
+            margin-top: 10px;
+        }
+
+        .project-intro li {
+            margin-bottom: 6px;
+        }
+
+        .tools {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 70px;
+        }
+
+        /* SECTIONS */
+
+        .section {
+            margin-bottom: 70px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            margin-bottom: 25px;
+        }
+
+        .section-description {
+            max-width: 850px;
+            color: #555;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        /* SCREENSHOTS */
+
+        .screenshot {
+            margin: 0 0 40px;
+        }
+
+        .screenshot img {
+            display: block;
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+            border-radius: 6px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease;
+        }
+
+        .screenshot img:hover {
+            transform: translateY(-2px);
+        }
+
+        /* LIGHTBOX */
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.88);
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .lightbox img {
+            max-width: 95vw;
+            max-height: 90vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 35px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+            .container {
+                padding: 30px 18px 60px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- TOP BAR -->
+
+    <div class="top-bar">
+
+        <a
+            href="python.html"
+            class="back-link"
+            data-pl="← Powrót do projektów"
+            data-en="← Back to projects">
+            ← Powrót do projektów
+        </a>
+
+        <div class="language-switch">
+
+            <button
+                id="pl-btn"
+                onclick="setLanguage('pl')">
+                PL
+            </button>
+
+            <span>|</span>
+
+            <button
+                id="en-btn"
+                onclick="setLanguage('en')">
+                EN
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- PROJECT INTRO -->
+
+    <h1
+        data-pl="AI Analyst – Asystent analityczny oparty na AI"
+        data-en="AI Analyst – AI-Powered Data Analysis Assistant">
+        AI Analyst – Asystent analityczny oparty na AI
+    </h1>
+
+
+    <div class="project-intro">
+
+        <p
+            data-pl="Interaktywna aplikacja analityczna wykorzystująca sztuczną inteligencję, umożliwiająca przesyłanie zbiorów danych w formacie CSV oraz automatyczne generowanie podsumowań statystycznych i wniosków analitycznych."
+            data-en="Developed an interactive AI-powered data analysis application that allows users to upload CSV datasets and receive automated statistical summaries and AI-generated insights.">
+            Interaktywna aplikacja analityczna wykorzystująca sztuczną inteligencję, umożliwiająca przesyłanie zbiorów danych w formacie CSV oraz automatyczne generowanie podsumowań statystycznych i wniosków analitycznych.
+        </p>
+
+        <p
+            data-pl="Aplikacja wykorzystuje bibliotekę Pandas do przeprowadzania analizy statystycznej danych oraz integruje OpenAI API w celu generowania interpretacji wyników w języku naturalnym."
+            data-en="The application uses Pandas to perform descriptive statistical analysis and integrates the OpenAI API to generate natural-language interpretations of the results.">
+            Aplikacja wykorzystuje bibliotekę Pandas do przeprowadzania analizy statystycznej danych oraz integruje OpenAI API w celu generowania interpretacji wyników w języku naturalnym.
+        </p>
+
+        <strong
+            data-pl="Główne funkcjonalności:"
+            data-en="Key features:">
+            Główne funkcjonalności:
+        </strong>
+
+        <ul>
+            <li
+                data-pl="Przesyłanie plików CSV i podgląd zbioru danych."
+                data-en="CSV file upload and dataset preview.">
+                Przesyłanie plików CSV i podgląd zbioru danych.
+            </li>
+
+            <li
+                data-pl="Automatyczne generowanie statystyk opisowych z wykorzystaniem Pandas."
+                data-en="Automated descriptive statistics using Pandas.">
+                Automatyczne generowanie statystyk opisowych z wykorzystaniem Pandas.
+            </li>
+
+            <li
+                data-pl="Generowanie wniosków przez AI, obejmujących trendy, potencjalne anomalie i rekomendacje biznesowe."
+                data-en="AI-generated insights, including trends, potential anomalies and business recommendations.">
+                Generowanie wniosków przez AI, obejmujących trendy, potencjalne anomalie i rekomendacje biznesowe.
+            </li>
+
+            <li
+                data-pl="Interakcja w języku naturalnym z wykorzystaniem zintegrowanego asystenta AI."
+                data-en="Natural-language interaction through an integrated AI assistant.">
+                Interakcja w języku naturalnym z wykorzystaniem zintegrowanego asystenta AI.
+            </li>
+        </ul>
+
+        <strong
+            data-pl="Cel projektu:"
+            data-en="Objective:">
+            Cel projektu:
+        </strong>
+
+        <p
+            data-pl="Poznanie praktycznych zastosowań generatywnej sztucznej inteligencji w analityce danych oraz pokazanie, w jaki sposób AI może ułatwiać interpretację danych osobom bez zaawansowanej wiedzy technicznej."
+            data-en="Explore the practical application of generative AI in data analytics and demonstrate how AI can make data interpretation more accessible to non-technical users.">
+            Poznanie praktycznych zastosowań generatywnej sztucznej inteligencji w analityce danych oraz pokazanie, w jaki sposób AI może ułatwiać interpretację danych osobom bez zaawansowanej wiedzy technicznej.
+        </p>
+
+    </div>
+
+
+    <div
+        class="tools"
+        data-pl="Technologie: Python · Streamlit · Pandas · OpenAI API"
+        data-en="Technologies: Python · Streamlit · Pandas · OpenAI API">
+        Technologie: Python · Streamlit · Pandas · OpenAI API
+    </div>
+
+
+    <!-- APPLICATION SCREENSHOT -->
+
+    <section class="section">
+
+        <h2
+            class="section-title"
+            data-pl="Podgląd aplikacji"
+            data-en="Application Preview">
+            Podgląd aplikacji
+        </h2>
+
+        <figure class="screenshot">
+
+            <img
+                src="../images/python/ai1.png"
+                alt="AI Analyst application preview"
+                onclick="openLightbox(this.src, this.alt)">
+
+        </figure>
+
+    </section>
+
+</div>
+
+
+<!-- LIGHTBOX -->
+
+<div
+    id="lightbox"
+    class="lightbox"
+    onclick="closeLightbox()">
+
+    <button
+        class="lightbox-close"
+        onclick="event.stopPropagation(); closeLightbox()">
+        ×
+    </button>
+
+    <img
+        id="lightbox-image"
+        src=""
+        alt=""
+        onclick="event.stopPropagation()">
+
+</div>
+
+
+<script>
+
+    function setLanguage(language) {
+
+        document.documentElement.lang = language;
+
+        const elements = document.querySelectorAll("[data-pl]");
+
+        elements.forEach(function(element) {
+
+            element.textContent =
+                element.getAttribute("data-" + language);
+
+        });
+
+        document
+            .getElementById("pl-btn")
+            .classList
+            .toggle("active", language === "pl");
+
+        document
+            .getElementById("en-btn")
+            .classList
+            .toggle("active", language === "en");
+
+        document.title =
+            language === "pl"
+                ? "Maja Przybyła | AI Analyst"
+                : "Maja Przybyła | AI Analyst";
+
+        localStorage.setItem("language", language);
+
+    }
+
+
+    function openLightbox(src, alt) {
+
+        const lightbox =
+            document.getElementById("lightbox");
+
+        const image =
+            document.getElementById("lightbox-image");
+
+        image.src = src;
+        image.alt = alt;
+
+        lightbox.style.display = "flex";
+
+    }
+
+
+    function closeLightbox() {
+
+        document
+            .getElementById("lightbox")
+            .style.display = "none";
+
+    }
+
+
+    const savedLanguage =
+        localStorage.getItem("language") || "pl";
+
+    setLanguage(savedLanguage);
+
+</script>
+
+</body>
+</html>
