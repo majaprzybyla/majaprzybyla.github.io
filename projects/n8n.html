@@ -1,1 +1,302 @@
 
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>n8n | Maja Przybyła</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f6f3;
+            color: #202020;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 50px 30px 90px;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 65px;
+        }
+
+        .back-link {
+            color: #555;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            opacity: 0.6;
+        }
+
+        .language-switch {
+            font-size: 14px;
+        }
+
+        .language-switch button {
+            background: none;
+            border: none;
+            font: inherit;
+            cursor: pointer;
+            color: #999;
+            padding: 0;
+        }
+
+        .language-switch button.active {
+            color: #202020;
+            font-weight: 600;
+        }
+
+        .language-switch span {
+            color: #ccc;
+            margin: 0 5px;
+        }
+
+        h1 {
+            font-size: 42px;
+            letter-spacing: -1.5px;
+            margin-bottom: 45px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .projects {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .project {
+            display: block;
+            background: white;
+            border: 1px solid #deddd8;
+            padding: 28px 32px;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .project:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.07);
+        }
+
+        .project h3 {
+            font-size: 21px;
+            letter-spacing: -0.4px;
+            margin-bottom: 10px;
+        }
+
+        .project p {
+            color: #666;
+            font-size: 15px;
+            margin-bottom: 16px;
+            max-width: 750px;
+        }
+
+        .project-tools {
+            font-size: 13px;
+            color: #888;
+        }
+
+        .project-link {
+            color: #A732CF;
+            font-size: 14px;
+            margin-top: 18px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 700px) {
+
+            .container {
+                padding: 30px 6% 70px;
+            }
+
+            .top-bar {
+                margin-bottom: 50px;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            .project {
+                padding: 24px;
+            }
+
+            .project h3 {
+                font-size: 19px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <main class="container">
+
+        <!-- NAVIGATION -->
+
+        <div class="top-bar">
+
+            <a href="../index.html"
+               class="back-link"
+               data-pl="← Powrót do strony głównej"
+               data-en="← Back to homepage">
+
+                ← Powrót do strony głównej
+
+            </a>
+
+            <span class="language-switch">
+
+                <button id="pl-btn"
+                        class="active"
+                        onclick="setLanguage('pl')">
+
+                    PL
+
+                </button>
+
+                <span>|</span>
+
+                <button id="en-btn"
+                        onclick="setLanguage('en')">
+
+                    EN
+
+                </button>
+
+            </span>
+
+        </div>
+
+
+        <!-- PAGE TITLE -->
+
+        <h1>n8n</h1>
+
+
+        <!-- PROJECTS -->
+
+        <div class="section-title"
+             data-pl="Projekty"
+             data-en="Projects">
+
+            Projekty
+
+        </div>
+
+        <div class="projects">
+
+
+            <!-- CUSTOMER FEEDBACK AI ANALYZER -->
+
+            <a href="n8n-customer-feedback.html"
+               class="project">
+
+                <h3>
+                    Customer Feedback AI Analyzer
+                </h3>
+
+                <p
+                    data-pl="Zautomatyzowany proces analizy opinii klientów z wykorzystaniem lokalnego modelu Llama 3.2. Integracja n8n, Ollama i Google Sheets umożliwia automatyczną klasyfikację sentymentu, ocenę pilności, podsumowywanie opinii i generowanie rekomendacji biznesowych."
+                    data-en="An automated customer feedback analysis workflow using a locally hosted Llama 3.2 model. Integrating n8n, Ollama, and Google Sheets to classify sentiment, assess urgency, summarize feedback, and generate business recommendations.">
+
+                    Zautomatyzowany proces analizy opinii klientów z wykorzystaniem lokalnego modelu Llama 3.2. Integracja n8n, Ollama i Google Sheets umożliwia automatyczną klasyfikację sentymentu, ocenę pilności, podsumowywanie opinii i generowanie rekomendacji biznesowych.
+
+                </p>
+
+                <div class="project-tools">
+                    n8n · Docker · Ollama · Llama 3.2 · Google Sheets · JavaScript
+                </div>
+
+                <div class="project-link"
+                     data-pl="Zobacz projekt →"
+                     data-en="View project →">
+
+                    Zobacz projekt →
+
+                </div>
+
+            </a>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- LANGUAGE SWITCHING -->
+
+    <script>
+
+        function setLanguage(language) {
+
+            document.documentElement.lang = language;
+
+            const elements =
+                document.querySelectorAll("[data-pl]");
+
+            elements.forEach(function(element) {
+
+                element.textContent =
+                    element.getAttribute("data-" + language);
+
+            });
+
+            document.getElementById("pl-btn")
+                .classList.toggle(
+                    "active",
+                    language === "pl"
+                );
+
+            document.getElementById("en-btn")
+                .classList.toggle(
+                    "active",
+                    language === "en"
+                );
+
+            localStorage.setItem(
+                "language",
+                language
+            );
+
+        }
+
+
+        const savedLanguage =
+            localStorage.getItem("language") || "pl";
+
+        setLanguage(savedLanguage);
+
+    </script>
+
+</body>
+</html>
+
