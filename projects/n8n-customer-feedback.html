@@ -1,1 +1,1458 @@
 
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Customer Feedback AI Analyzer | Maja Przybyła</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f6f3;
+            color: #202020;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 50px 30px 90px;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 65px;
+        }
+
+        .back-link {
+            color: #555;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            opacity: 0.6;
+        }
+
+        .language-switch {
+            font-size: 14px;
+        }
+
+        .language-switch button {
+            background: none;
+            border: none;
+            font: inherit;
+            cursor: pointer;
+            color: #999;
+            padding: 0;
+        }
+
+        .language-switch button.active {
+            color: #202020;
+            font-weight: 600;
+        }
+
+        .language-switch span {
+            color: #ccc;
+            margin: 0 5px;
+        }
+
+        h1 {
+            font-size: 42px;
+            line-height: 1.2;
+            letter-spacing: -1.5px;
+            margin-bottom: 18px;
+        }
+
+        .project-category {
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 35px;
+        }
+
+        h2 {
+            font-size: 26px;
+            letter-spacing: -0.5px;
+            margin-top: 65px;
+            margin-bottom: 22px;
+        }
+
+        h3 {
+            font-size: 20px;
+            letter-spacing: -0.3px;
+            margin-top: 35px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #555;
+            margin-bottom: 18px;
+        }
+
+        strong {
+            color: #303030;
+        }
+
+        ul, ol {
+            padding-left: 25px;
+            margin: 15px 0 25px;
+            color: #555;
+        }
+
+        li {
+            margin-bottom: 9px;
+            padding-left: 4px;
+        }
+
+        .image-container {
+            margin: 30px 0 40px;
+        }
+
+        .image-container img {
+            width: 100%;
+            display: block;
+            border: 1px solid #deddd8;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .image-container img:hover {
+            opacity: 0.92;
+        }
+
+        .technologies-section {
+            background: white;
+            border: 1px solid #deddd8;
+            padding: 30px 35px;
+            margin-top: 45px;
+        }
+
+        .technologies-section h3 {
+            margin-top: 0;
+        }
+
+        .technologies-section h3:not(:first-child) {
+            margin-top: 30px;
+        }
+
+        .technologies-section p {
+            margin-bottom: 0;
+            color: #666;
+            line-height: 2;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0 35px;
+            background: white;
+            font-size: 14px;
+        }
+
+        .data-table th,
+        .data-table td {
+            text-align: left;
+            padding: 13px 16px;
+            border: 1px solid #deddd8;
+        }
+
+        .data-table th {
+            background: #f0efec;
+            color: #303030;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            color: #555;
+        }
+
+        .objective {
+            margin-top: 30px;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.92);
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .lightbox img {
+            max-width: 95%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 35px;
+            cursor: pointer;
+            font-weight: 300;
+            background: none;
+            border: none;
+        }
+
+        @media (max-width: 700px) {
+
+            .container {
+                padding: 30px 6% 70px;
+            }
+
+            .top-bar {
+                margin-bottom: 50px;
+            }
+
+            h1 {
+                font-size: 34px;
+            }
+
+            h2 {
+                font-size: 23px;
+                margin-top: 50px;
+            }
+
+            h3 {
+                font-size: 18px;
+            }
+
+            .technologies-section {
+                padding: 25px;
+            }
+
+            .data-table {
+                font-size: 13px;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 10px;
+            }
+
+            .lightbox {
+                padding: 15px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <main class="container">
+
+        <!-- NAVIGATION -->
+
+        <div class="top-bar">
+
+            <a href="n8n.html"
+               class="back-link"
+               data-pl="← Powrót do projektów n8n"
+               data-en="← Back to n8n projects">
+                ← Powrót do projektów n8n
+            </a>
+
+            <span class="language-switch">
+
+                <button id="pl-btn"
+                        class="active"
+                        onclick="setLanguage('pl')">
+                    PL
+                </button>
+
+                <span>|</span>
+
+                <button id="en-btn"
+                        onclick="setLanguage('en')">
+                    EN
+                </button>
+
+            </span>
+
+        </div>
+
+
+        <!-- PROJECT TITLE -->
+
+        <h1>Customer Feedback AI Analyzer</h1>
+
+        <div class="project-category"
+             data-pl="AUTOMATYZACJA AI · ANALIZA DANYCH · AUTOMATYZACJA PROCESÓW"
+             data-en="AI AUTOMATION · DATA ANALYSIS · WORKFLOW AUTOMATION">
+
+            AUTOMATYZACJA AI · ANALIZA DANYCH · AUTOMATYZACJA PROCESÓW
+
+        </div>
+
+
+        <!-- MAIN SCREENSHOT -->
+
+        <div class="image-container">
+
+            <img src="../images/n8n/n8n2.png"
+                 alt="Customer Feedback AI Analyzer workflow overview"
+                 onclick="openLightbox(this)">
+
+        </div>
+
+
+        <!-- TECHNOLOGIES -->
+
+        <div class="technologies-section">
+
+            <h3
+                data-pl="Wykorzystane technologie i umiejętności"
+                data-en="Technologies and skills demonstrated">
+
+                Wykorzystane technologie i umiejętności
+
+            </h3>
+
+            <h3
+                data-pl="Technologie"
+                data-en="Technologies">
+
+                Technologie
+
+            </h3>
+
+            <p>
+                n8n · Docker · Ollama · Llama 3.2 · Google Sheets ·
+                Google Cloud · JavaScript · JSON · OAuth 2.0
+            </p>
+
+            <h3
+                data-pl="Umiejętności"
+                data-en="Skills">
+
+                Umiejętności
+
+            </h3>
+
+            <p
+                data-pl="Automatyzacja procesów · Integracja modeli LLM · Inżynieria promptów · Analiza sentymentu · Klasyfikacja tekstu · Przetwarzanie danych · Parsowanie JSON · Walidacja danych · Obsługa błędów · Uwierzytelnianie API"
+                data-en="Workflow automation · LLM integration · Prompt engineering · Sentiment analysis · Text classification · Data processing · JSON parsing · Data validation · Error handling · API authentication">
+
+                Automatyzacja procesów · Integracja modeli LLM ·
+                Inżynieria promptów · Analiza sentymentu · Klasyfikacja tekstu ·
+                Przetwarzanie danych · Parsowanie JSON · Walidacja danych ·
+                Obsługa błędów · Uwierzytelnianie API
+
+            </p>
+
+        </div>
+
+
+        <!-- 1. PROJECT OVERVIEW -->
+
+        <h2
+            data-pl="1. Opis projektu"
+            data-en="1. Project overview">
+
+            1. Opis projektu
+
+        </h2>
+
+        <p
+            data-pl="Customer Feedback AI Analyzer to zautomatyzowany proces analizy opinii klientów z wykorzystaniem lokalnie uruchomionego dużego modelu językowego (LLM)."
+            data-en="The Customer Feedback AI Analyzer is an automated workflow designed to analyze customer feedback using a locally hosted Large Language Model (LLM).">
+
+            Customer Feedback AI Analyzer to zautomatyzowany proces analizy opinii klientów z wykorzystaniem lokalnie uruchomionego dużego modelu językowego (LLM).
+
+        </p>
+
+        <p
+            data-pl="Projekt wykorzystuje n8n do orkiestracji procesu przetwarzania danych, Ollama do lokalnego uruchamiania modelu AI oraz Google Sheets jako źródło i miejsce docelowe danych."
+            data-en="The project uses n8n to orchestrate the data-processing workflow, Ollama to run the AI model locally, and Google Sheets as the data source and destination.">
+
+            Projekt wykorzystuje n8n do orkiestracji procesu przetwarzania danych, Ollama do lokalnego uruchamiania modelu AI oraz Google Sheets jako źródło i miejsce docelowe danych.
+
+        </p>
+
+        <p
+            data-pl="Proces pobiera opinie klientów, analizuje każdy rekord z wykorzystaniem AI, klasyfikuje doświadczenia klientów, generuje zwięzłe podsumowanie i rekomenduje odpowiednie działanie biznesowe. Wygenerowane wyniki są następnie automatycznie zapisywane w odpowiadających im rekordach Google Sheets."
+            data-en="The workflow retrieves customer feedback, analyzes each record using AI, classifies the customer's experience, generates a concise summary and recommends an appropriate business action. The generated results are then automatically written back to the corresponding Google Sheets records.">
+
+            Proces pobiera opinie klientów, analizuje każdy rekord z wykorzystaniem AI, klasyfikuje doświadczenia klientów, generuje zwięzłe podsumowanie i rekomenduje odpowiednie działanie biznesowe. Wygenerowane wyniki są następnie automatycznie zapisywane w odpowiadających im rekordach Google Sheets.
+
+        </p>
+
+        <p class="objective">
+
+            <strong
+                data-pl="Główny cel:"
+                data-en="Main objective:">
+                Główny cel:
+            </strong>
+
+            <span
+                data-pl="Automatyzacja analizy i klasyfikacji opinii klientów poprzez przekształcanie nieustrukturyzowanego tekstu w uporządkowane, praktyczne wnioski biznesowe."
+                data-en="Automate the analysis and classification of customer feedback, transforming unstructured text into structured, actionable business insights.">
+
+                Automatyzacja analizy i klasyfikacji opinii klientów poprzez przekształcanie nieustrukturyzowanego tekstu w uporządkowane, praktyczne wnioski biznesowe.
+
+            </span>
+
+        </p>
+
+
+        <!-- 2. ENVIRONMENT -->
+
+        <h2
+            data-pl="2. Środowisko i konfiguracja techniczna"
+            data-en="2. Environment and technical setup">
+
+            2. Środowisko i konfiguracja techniczna
+
+        </h2>
+
+        <p
+            data-pl="Przed stworzeniem procesu skonfigurowałam lokalne środowisko umożliwiające uruchomienie całego projektu bez korzystania z płatnych, chmurowych interfejsów API modeli AI."
+            data-en="Before building the workflow, I configured a local environment that allowed me to run the entire project without relying on paid cloud-based AI APIs.">
+
+            Przed stworzeniem procesu skonfigurowałam lokalne środowisko umożliwiające uruchomienie całego projektu bez korzystania z płatnych, chmurowych interfejsów API modeli AI.
+
+        </p>
+
+        <h3>Docker Desktop</h3>
+
+        <ul>
+
+            <li
+                data-pl="Instalacja i konfiguracja Docker Desktop."
+                data-en="Installed and configured Docker Desktop.">
+                Instalacja i konfiguracja Docker Desktop.
+            </li>
+
+            <li
+                data-pl="Wykorzystanie Dockera do uruchomienia samodzielnie hostowanej wersji n8n Community Edition w kontenerze."
+                data-en="Used Docker to run the self-hosted n8n Community Edition in a container.">
+                Wykorzystanie Dockera do uruchomienia samodzielnie hostowanej wersji n8n Community Edition w kontenerze.
+            </li>
+
+            <li
+                data-pl="Konfiguracja mapowania portów umożliwiającego lokalny dostęp do interfejsu n8n."
+                data-en="Configured port mapping to access the n8n interface locally.">
+                Konfiguracja mapowania portów umożliwiającego lokalny dostęp do interfejsu n8n.
+            </li>
+
+            <li
+                data-pl="Utworzenie trwałego wolumenu Docker (n8n_data) do przechowywania konfiguracji n8n i danych procesów."
+                data-en="Created a persistent Docker volume (n8n_data) to retain n8n configuration and workflow data.">
+                Utworzenie trwałego wolumenu Docker (n8n_data) do przechowywania konfiguracji n8n i danych procesów.
+            </li>
+
+        </ul>
+
+        <h3>n8n Community Edition</h3>
+
+        <ul>
+
+            <li
+                data-pl="Lokalna instalacja i uruchomienie n8n pod adresem localhost:5678."
+                data-en="Installed and launched n8n locally at localhost:5678.">
+                Lokalna instalacja i uruchomienie n8n pod adresem localhost:5678.
+            </li>
+
+            <li
+                data-pl="Utworzenie konta i konfiguracja środowiska pracy."
+                data-en="Created an account and configured the workflow environment.">
+                Utworzenie konta i konfiguracja środowiska pracy.
+            </li>
+
+            <li
+                data-pl="Wykorzystanie n8n jako centralnej platformy automatyzacji łączącej źródło danych, model AI i miejsce docelowe."
+                data-en="Used n8n as the central automation platform, connecting the data source, AI model and destination.">
+                Wykorzystanie n8n jako centralnej platformy automatyzacji łączącej źródło danych, model AI i miejsce docelowe.
+            </li>
+
+        </ul>
+
+        <h3>Ollama</h3>
+
+        <ul>
+
+            <li
+                data-pl="Lokalna instalacja Ollama."
+                data-en="Installed Ollama locally.">
+                Lokalna instalacja Ollama.
+            </li>
+
+            <li
+                data-pl="Pobranie modelu llama3.2:3b."
+                data-en="Downloaded the llama3.2:3b model.">
+                Pobranie modelu llama3.2:3b.
+            </li>
+
+            <li
+                data-pl="Konfiguracja połączenia między n8n a Ollama z wykorzystaniem lokalnego endpointu API."
+                data-en="Configured the connection between n8n and Ollama using the local API endpoint.">
+                Konfiguracja połączenia między n8n a Ollama z wykorzystaniem lokalnego endpointu API.
+            </li>
+
+            <li
+                data-pl="Połączenie modelu Ollama Chat Model z n8n, umożliwiające analizę AI bez zewnętrznej subskrypcji API."
+                data-en="Connected the Ollama Chat Model to n8n, enabling AI-powered analysis without an external AI API subscription.">
+                Połączenie modelu Ollama Chat Model z n8n, umożliwiające analizę AI bez zewnętrznej subskrypcji API.
+            </li>
+
+        </ul>
+
+        <p>
+            <strong>Technologie:</strong>
+            Docker Desktop · n8n Community Edition · Ollama · Llama 3.2 (3B)
+        </p>
+
+
+        <!-- 3. DATASET -->
+
+        <h2
+            data-pl="3. Przygotowanie zbioru danych"
+            data-en="3. Dataset preparation">
+
+            3. Przygotowanie zbioru danych
+
+        </h2>
+
+        <div class="image-container">
+
+            <img src="../images/n8n/n8n1.png"
+                 alt="Customer feedback dataset in Google Sheets"
+                 onclick="openLightbox(this)">
+
+        </div>
+
+        <p
+            data-pl="Projekt wykorzystuje fikcyjny zbiór danych zawierający 30 opinii klientów, przechowywany w Google Sheets."
+            data-en="The project uses a fictional customer feedback dataset containing 30 records, stored in Google Sheets.">
+
+            Projekt wykorzystuje fikcyjny zbiór danych zawierający 30 opinii klientów, przechowywany w Google Sheets.
+
+        </p>
+
+        <p
+            data-pl="Każdy rekord reprezentuje pojedynczą interakcję z klientem i zawiera następujące pola:"
+            data-en="Each record represents an individual customer interaction and contains the following fields:">
+
+            Każdy rekord reprezentuje pojedynczą interakcję z klientem i zawiera następujące pola:
+
+        </p>
+
+        <table class="data-table">
+
+            <thead>
+                <tr>
+                    <th
+                        data-pl="Pole"
+                        data-en="Field">
+                        Pole
+                    </th>
+
+                    <th
+                        data-pl="Opis"
+                        data-en="Description">
+                        Opis
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>feedback_id</td>
+                    <td
+                        data-pl="Unikalny identyfikator opinii"
+                        data-en="Unique feedback identifier">
+                        Unikalny identyfikator opinii
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>date_received</td>
+                    <td
+                        data-pl="Data otrzymania opinii"
+                        data-en="Date the feedback was received">
+                        Data otrzymania opinii
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>customer_type</td>
+                    <td
+                        data-pl="Nowy lub powracający klient"
+                        data-en="New or returning customer">
+                        Nowy lub powracający klient
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>channel</td>
+                    <td
+                        data-pl="Kanał komunikacji (e-mail, strona internetowa, media społecznościowe itp.)"
+                        data-en="Communication channel (email, website, social media, etc.)">
+                        Kanał komunikacji (e-mail, strona internetowa, media społecznościowe itp.)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>rating_1_to_5</td>
+                    <td
+                        data-pl="Ocena satysfakcji klienta"
+                        data-en="Customer satisfaction rating">
+                        Ocena satysfakcji klienta
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>feedback_text</td>
+                    <td
+                        data-pl="Oryginalna opinia klienta w języku naturalnym"
+                        data-en="Original customer feedback in natural language">
+                        Oryginalna opinia klienta w języku naturalnym
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <p
+            data-pl="Utworzono również pięć dodatkowych kolumn przeznaczonych na wyniki analizy wygenerowane przez AI:"
+            data-en="Five additional columns were created to store the AI-generated analysis:">
+
+            Utworzono również pięć dodatkowych kolumn przeznaczonych na wyniki analizy wygenerowane przez AI:
+
+        </p>
+
+        <table class="data-table">
+
+            <thead>
+                <tr>
+                    <th
+                        data-pl="Pole generowane przez AI"
+                        data-en="AI-generated field">
+                        Pole generowane przez AI
+                    </th>
+
+                    <th
+                        data-pl="Przeznaczenie"
+                        data-en="Purpose">
+                        Przeznaczenie
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>ai_sentiment</td>
+                    <td
+                        data-pl="Pozytywny, neutralny lub negatywny wydźwięk opinii"
+                        data-en="Positive, neutral or negative sentiment">
+                        Pozytywny, neutralny lub negatywny wydźwięk opinii
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>ai_category</td>
+                    <td
+                        data-pl="Główny temat lub zidentyfikowany problem"
+                        data-en="Main topic or issue identified">
+                        Główny temat lub zidentyfikowany problem
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>ai_urgency</td>
+                    <td
+                        data-pl="Niski, średni lub wysoki poziom pilności"
+                        data-en="Low, medium or high urgency">
+                        Niski, średni lub wysoki poziom pilności
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>ai_summary</td>
+                    <td
+                        data-pl="Zwięzłe podsumowanie doświadczenia klienta"
+                        data-en="Concise summary of the customer's experience">
+                        Zwięzłe podsumowanie doświadczenia klienta
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>recommended_action</td>
+                    <td
+                        data-pl="Sugerowane działanie dla firmy"
+                        data-en="Suggested action for the company">
+                        Sugerowane działanie dla firmy
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <p
+            data-pl="Oryginalne informacje o klientach zostały zachowane, natomiast pięć dodatkowych pól początkowo pozostawiono pustych, aby mogły zostać uzupełnione przez zautomatyzowany proces."
+            data-en="The original customer information was retained, while the five additional fields were initially left empty for the automated workflow to populate.">
+
+            Oryginalne informacje o klientach zostały zachowane, natomiast pięć dodatkowych pól początkowo pozostawiono pustych, aby mogły zostać uzupełnione przez zautomatyzowany proces.
+
+        </p>
+
+
+        <!-- 4. WORKFLOW DEVELOPMENT -->
+
+        <h2
+            data-pl="4. Tworzenie procesu automatyzacji"
+            data-en="4. Workflow development">
+
+            4. Tworzenie procesu automatyzacji
+
+        </h2>
+
+        <p
+            data-pl="Automatyzacja została opracowana w n8n i podzielona na cztery główne etapy przetwarzania."
+            data-en="The automation was developed in n8n using four main processing stages.">
+
+            Automatyzacja została opracowana w n8n i podzielona na cztery główne etapy przetwarzania.
+
+        </p>
+
+
+        <!-- STEP 1 -->
+
+        <h3
+            data-pl="Krok 1. Pobieranie opinii klientów – Google Sheets"
+            data-en="Step 1. Retrieving customer feedback – Google Sheets">
+
+            Krok 1. Pobieranie opinii klientów – Google Sheets
+
+        </h3>
+
+        <p>
+            <strong>Google Sheets – Get Row(s) in Sheet</strong>
+        </p>
+
+        <p
+            data-pl="Pierwszy etap pobiera rekordy opinii klientów z wybranego dokumentu Google Sheets."
+            data-en="The first step retrieves customer feedback records from the selected Google Sheets document.">
+
+            Pierwszy etap pobiera rekordy opinii klientów z wybranego dokumentu Google Sheets.
+
+        </p>
+
+        <div class="image-container">
+
+            <img src="../images/n8n/n8n3.png"
+                 alt="Google Sheets Get Row(s) in Sheet node"
+                 onclick="openLightbox(this)">
+
+        </div>
+
+        <p
+            data-pl="Aby skonfigurować połączenie, wykonałam następujące czynności:"
+            data-en="To establish the connection, I:">
+
+            Aby skonfigurować połączenie, wykonałam następujące czynności:
+
+        </p>
+
+        <ul>
+
+            <li
+                data-pl="Utworzyłam projekt w Google Cloud Console."
+                data-en="Created a project in Google Cloud Console.">
+                Utworzyłam projekt w Google Cloud Console.
+            </li>
+
+            <li
+                data-pl="Włączyłam Google Sheets API oraz Google Drive API."
+                data-en="Enabled the Google Sheets API and Google Drive API.">
+                Włączyłam Google Sheets API oraz Google Drive API.
+            </li>
+
+            <li
+                data-pl="Skonfigurowałam ekran zgody OAuth i zarejestrowałam swoje konto jako użytkownika testowego."
+                data-en="Configured the OAuth consent screen and registered my account as a test user.">
+                Skonfigurowałam ekran zgody OAuth i zarejestrowałam swoje konto jako użytkownika testowego.
+            </li>
+
+            <li
+                data-pl="Utworzyłam dane uwierzytelniające OAuth 2.0 z typem klienta Web Application."
+                data-en="Created OAuth 2.0 credentials using a Web Application client.">
+                Utworzyłam dane uwierzytelniające OAuth 2.0 z typem klienta Web Application.
+            </li>
+
+            <li
+                data-pl="Skonfigurowałam autoryzowany adres przekierowania (redirect URI) udostępniony przez n8n."
+                data-en="Configured the authorized redirect URI provided by n8n.">
+                Skonfigurowałam autoryzowany adres przekierowania (redirect URI) udostępniony przez n8n.
+            </li>
+
+            <li
+                data-pl="Dodałam Client ID i Client Secret do poświadczeń Google Sheets OAuth2 w n8n i autoryzowałam dostęp."
+                data-en="Added the Client ID and Client Secret to the Google Sheets OAuth2 credential in n8n and authorized access.">
+                Dodałam Client ID i Client Secret do poświadczeń Google Sheets OAuth2 w n8n i autoryzowałam dostęp.
+            </li>
+
+        </ul>
+
+        <p
+            data-pl="Po uwierzytelnieniu wybrałam dokument Google Sheets oraz konkretny arkusz zawierający zbiór danych."
+            data-en="After authentication, I selected the Google Sheets document and the specific worksheet containing the dataset.">
+
+            Po uwierzytelnieniu wybrałam dokument Google Sheets oraz konkretny arkusz zawierający zbiór danych.
+
+        </p>
+
+        <p
+            data-pl="Operacja Get Row(s) in Sheet pobiera rekordy opinii klientów, przekazując każdy wiersz do kolejnego etapu analizy AI jako osobny element procesu."
+            data-en="The Get Row(s) in Sheet operation retrieves the customer feedback records, passing each row to the subsequent AI analysis stage as an individual workflow item.">
+
+            Operacja Get Row(s) in Sheet pobiera rekordy opinii klientów, przekazując każdy wiersz do kolejnego etapu analizy AI jako osobny element procesu.
+
+        </p>
+
+
+        <!-- STEP 2 -->
+
+        <h3
+            data-pl="Krok 2. Analiza opinii z wykorzystaniem AI – Basic LLM Chain"
+            data-en="Step 2. AI-powered feedback analysis – Basic LLM Chain">
+
+            Krok 2. Analiza opinii z wykorzystaniem AI – Basic LLM Chain
+
+        </h3>
+
+        <p>
+            <strong>Basic LLM Chain + Ollama Chat Model</strong>
+        </p>
+
+        <p
+            data-pl="Drugi etap odpowiada za właściwą analizę opinii klientów z wykorzystaniem AI."
+            data-en="The second stage performs the actual AI analysis.">
+
+            Drugi etap odpowiada za właściwą analizę opinii klientów z wykorzystaniem AI.
+
+        </p>
+
+        <div class="image-container">
+
+            <img src="../images/n8n/n8n4.png"
+                 alt="Basic LLM Chain and Ollama Chat Model configuration"
+                 onclick="openLightbox(this)">
+
+        </div>
+
+        <p
+            data-pl="Węzeł Basic LLM Chain został połączony z Ollama Chat Model, wykorzystującym lokalnie uruchomiony model Llama 3.2 (3B)."
+            data-en="A Basic LLM Chain node was connected to the Ollama Chat Model, using the locally hosted Llama 3.2 (3B) model.">
+
+            Węzeł Basic LLM Chain został połączony z Ollama Chat Model, wykorzystującym lokalnie uruchomiony model Llama 3.2 (3B).
+
+        </p>
+
+        <p
+            data-pl="Opracowałam własny prompt instruujący model, aby pełnił rolę profesjonalnego analityka opinii klientów."
+            data-en="I developed a custom prompt instructing the model to act as a professional customer feedback analyst.">
+
+            Opracowałam własny prompt instruujący model, aby pełnił rolę profesjonalnego analityka opinii klientów.
+
+        </p>
+
+        <p
+            data-pl="Prompt dynamicznie pobiera informacje z każdego rekordu Google Sheets za pomocą wyrażeń n8n (expressions), w tym:"
+            data-en="The prompt dynamically incorporates information from each Google Sheets record using n8n expressions, including:">
+
+            Prompt dynamicznie pobiera informacje z każdego rekordu Google Sheets za pomocą wyrażeń n8n (expressions), w tym:
+
+        </p>
+
+        <ul>
+
+            <li>Feedback ID</li>
+            <li>Date received</li>
+            <li>Customer type</li>
+            <li>Communication channel</li>
+            <li>Customer rating</li>
+            <li>Original feedback text</li>
+
+        </ul>
+
+        <p
+            data-pl="Model otrzymał instrukcję wygenerowania pięciu konkretnych wyników analitycznych w formacie JSON:"
+            data-en="The model was instructed to return five specific analytical outputs in JSON format:">
+
+            Model otrzymał instrukcję wygenerowania pięciu konkretnych wyników analitycznych w formacie JSON:
+
+        </p>
+
+        <ol>
+
+            <li>
+                <strong
+                    data-pl="Analiza sentymentu:"
+                    data-en="Sentiment analysis:">
+                    Analiza sentymentu:
+                </strong>
+
+                <span
+                    data-pl="Określenie, czy opinia klienta jest pozytywna, neutralna czy negatywna."
+                    data-en="Identify whether the customer's feedback is positive, neutral or negative.">
+                    Określenie, czy opinia klienta jest pozytywna, neutralna czy negatywna.
+                </span>
+            </li>
+
+            <li>
+                <strong
+                    data-pl="Klasyfikacja kategorii:"
+                    data-en="Category classification:">
+                    Klasyfikacja kategorii:
+                </strong>
+
+                <span
+                    data-pl="Identyfikacja głównego tematu opinii, np. problemu z płatnością, dostawą lub obsługą klienta."
+                    data-en="Identify the main subject of the feedback, such as a payment issue, delivery problem or customer service experience.">
+                    Identyfikacja głównego tematu opinii, np. problemu z płatnością, dostawą lub obsługą klienta.
+                </span>
+            </li>
+
+            <li>
+                <strong
+                    data-pl="Ocena pilności:"
+                    data-en="Urgency assessment:">
+                    Ocena pilności:
+                </strong>
+
+                <span
+                    data-pl="Przypisanie poziomu pilności: niski, średni lub wysoki."
+                    data-en="Assign a low, medium or high urgency level.">
+                    Przypisanie poziomu pilności: niski, średni lub wysoki.
+                </span>
+            </li>
+
+            <li>
+                <strong
+                    data-pl="Podsumowanie tekstu:"
+                    data-en="Text summarization:">
+                    Podsumowanie tekstu:
+                </strong>
+
+                <span
+                    data-pl="Wygenerowanie zwięzłego podsumowania doświadczenia klienta, ograniczonego do mniej niż 20 słów."
+                    data-en="Generate a concise summary of the customer's experience, limited to fewer than 20 words.">
+                    Wygenerowanie zwięzłego podsumowania doświadczenia klienta, ograniczonego do mniej niż 20 słów.
+                </span>
+            </li>
+
+            <li>
+                <strong
+                    data-pl="Rekomendacja działania:"
+                    data-en="Action recommendation:">
+                    Rekomendacja działania:
+                </strong>
+
+                <span
+                    data-pl="Zaproponowanie konkretnej i praktycznej reakcji biznesowej, ograniczonej do mniej niż 25 słów."
+                    data-en="Suggest a specific and practical business response, limited to fewer than 25 words.">
+                    Zaproponowanie konkretnej i praktycznej reakcji biznesowej, ograniczonej do mniej niż 25 słów.
+                </span>
+            </li>
+
+        </ol>
+
+        <p
+            data-pl="Dodatkowe instrukcje w prompcie wymagały, aby model opierał analizę wyłącznie na informacjach przekazanych przez klienta, nie wymyślał faktów oraz zwracał wyłącznie kompletny obiekt JSON, bez dodatkowych wyjaśnień i formatowania Markdown."
+            data-en="Additional prompt instructions required the model to base its analysis exclusively on the information provided by the customer, avoid inventing facts and return only a complete JSON object without additional explanations or Markdown formatting.">
+
+            Dodatkowe instrukcje w prompcie wymagały, aby model opierał analizę wyłącznie na informacjach przekazanych przez klienta, nie wymyślał faktów oraz zwracał wyłącznie kompletny obiekt JSON, bez dodatkowych wyjaśnień i formatowania Markdown.
+
+        </p>
+
+        <p
+            data-pl="Takie podejście zapewnia indywidualną analizę każdego rekordu klienta przy jednoczesnym zachowaniu spójnej struktury wyników."
+            data-en="This approach ensures that each customer record is analyzed individually while maintaining a consistent output structure.">
+
+            Takie podejście zapewnia indywidualną analizę każdego rekordu klienta przy jednoczesnym zachowaniu spójnej struktury wyników.
+
+        </p>
+
+
+        <!-- STEP 3 -->
+
+        <h3
+            data-pl="Krok 3. Przetwarzanie i walidacja odpowiedzi AI – JavaScript Code"
+            data-en="Step 3. Processing and validating AI responses – JavaScript Code">
+
+            Krok 3. Przetwarzanie i walidacja odpowiedzi AI – JavaScript Code
+
+        </h3>
+
+        <p>
+            <strong>Code node – JavaScript</strong>
+        </p>
+
+        <p
+            data-pl="Trzeci etap przetwarza odpowiedzi wygenerowane przez AI i przygotowuje je do zapisania w Google Sheets."
+            data-en="The third stage processes the AI-generated responses and prepares them for storage in Google Sheets.">
+
+            Trzeci etap przetwarza odpowiedzi wygenerowane przez AI i przygotowuje je do zapisania w Google Sheets.
+
+        </p>
+
+        <div class="image-container">
+
+            <img src="../images/n8n/n8n5.png"
+                 alt="JavaScript Code node for parsing and validating AI responses"
+                 onclick="openLightbox(this)">
+
+        </div>
+
+        <p
+            data-pl="Ponieważ LLM zwraca analizę w postaci tekstu, zaimplementowałam węzeł JavaScript Code, który przekształca odpowiedź w ustrukturyzowane dane."
+            data-en="Since the LLM returns its analysis as text, a JavaScript Code node was implemented to convert the response into structured data.">
+
+            Ponieważ LLM zwraca analizę w postaci tekstu, zaimplementowałam węzeł JavaScript Code, który przekształca odpowiedź w ustrukturyzowane dane.
+
+        </p>
+
+        <p><strong
+            data-pl="1. Pobranie oryginalnego rekordu klienta"
+            data-en="1. Retrieve the original customer record">
+            1. Pobranie oryginalnego rekordu klienta
+        </strong></p>
+
+        <p
+            data-pl="Oryginalne dane są pobierane z wejściowego węzła Google Sheets, dzięki czemu analiza wygenerowana przez AI pozostaje przypisana do właściwego rekordu opinii klienta."
+            data-en="The original data is retrieved from the Google Sheets input node, ensuring that the AI-generated analysis remains associated with the correct customer feedback record.">
+
+            Oryginalne dane są pobierane z wejściowego węzła Google Sheets, dzięki czemu analiza wygenerowana przez AI pozostaje przypisana do właściwego rekordu opinii klienta.
+
+        </p>
+
+        <p><strong
+            data-pl="2. Oczyszczenie odpowiedzi AI"
+            data-en="2. Clean the AI response">
+            2. Oczyszczenie odpowiedzi AI
+        </strong></p>
+
+        <p
+            data-pl="Kod usuwa potencjalne znaczniki bloków kodu Markdown (```json oraz ```) i zbędne białe znaki z wygenerowanej odpowiedzi."
+            data-en="The code removes potential Markdown code fences (```json and ```) and unnecessary whitespace from the generated response.">
+
+            Kod usuwa potencjalne znaczniki bloków kodu Markdown (```json oraz ```) i zbędne białe znaki z wygenerowanej odpowiedzi.
+
+        </p>
+
+        <p><strong
+            data-pl="3. Wyodrębnienie i parsowanie JSON"
+            data-en="3. Extract and parse JSON">
+            3. Wyodrębnienie i parsowanie JSON
+        </strong></p>
+
+        <p
+            data-pl="Kod lokalizuje początek obiektu JSON, wyodrębnia odpowiedź i parsuje ją za pomocą metody JavaScript JSON.parse()."
+            data-en="The code locates the beginning of the JSON object, extracts the response and parses it using JavaScript's JSON.parse() method.">
+
+            Kod lokalizuje początek obiektu JSON, wyodrębnia odpowiedź i parsuje ją za pomocą metody JavaScript JSON.parse().
+
+        </p>
+
+        <p
+            data-pl="Dodatkowy etap walidacji sprawdza, czy odpowiedź kończy się zamykającym nawiasem klamrowym }. Jeśli go brakuje, kod dodaje go przed parsowaniem."
+            data-en="An additional validation step checks whether the response ends with the closing }. If it is missing, the code appends it before parsing.">
+
+            Dodatkowy etap walidacji sprawdza, czy odpowiedź kończy się zamykającym nawiasem klamrowym }. Jeśli go brakuje, kod dodaje go przed parsowaniem.
+
+        </p>
+
+        <p
+            data-pl="Rozwiązanie to odpowiada na problem napotkany podczas tworzenia procesu, gdy lokalny model LLM sporadycznie generował poza tym kompletne odpowiedzi JSON bez końcowego nawiasu klamrowego."
+            data-en="This addresses an issue encountered during development where the local LLM occasionally generated otherwise complete JSON responses without the final closing brace.">
+
+            Rozwiązanie to odpowiada na problem napotkany podczas tworzenia procesu, gdy lokalny model LLM sporadycznie generował poza tym kompletne odpowiedzi JSON bez końcowego nawiasu klamrowego.
+
+        </p>
+
+        <p><strong
+            data-pl="4. Walidacja wymaganych pól"
+            data-en="4. Validate required fields">
+            4. Walidacja wymaganych pól
+        </strong></p>
+
+        <p
+            data-pl="Kod sprawdza, czy wszystkie pięć oczekiwanych pól jest obecnych:"
+            data-en="The code checks whether all five expected fields are present:">
+
+            Kod sprawdza, czy wszystkie pięć oczekiwanych pól jest obecnych:
+
+        </p>
+
+        <ul>
+            <li>ai_sentiment</li>
+            <li>ai_category</li>
+            <li>ai_urgency</li>
+            <li>ai_summary</li>
+            <li>recommended_action</li>
+        </ul>
+
+        <p
+            data-pl="Jeśli którekolwiek wymagane pole jest nieobecne lub puste, odpowiedź zostaje oznaczona jako nieudana."
+            data-en="If a required field is missing or empty, the response is marked as failed.">
+
+            Jeśli którekolwiek wymagane pole jest nieobecne lub puste, odpowiedź zostaje oznaczona jako nieudana.
+
+        </p>
+
+        <p><strong
+            data-pl="5. Połączenie oryginalnych danych z wynikami AI"
+            data-en="5. Combine original and AI-generated data">
+            5. Połączenie oryginalnych danych z wynikami AI
+        </strong></p>
+
+        <p
+            data-pl="W przypadku poprawnej odpowiedzi oryginalny rekord klienta zostaje połączony z pięcioma polami wygenerowanymi przez AI. Kod przypisuje również wartość processing_status równą success."
+            data-en="For successful responses, the original customer record is combined with the five AI-generated fields. The code also assigns a processing_status value of success.">
+
+            W przypadku poprawnej odpowiedzi oryginalny rekord klienta zostaje połączony z pięcioma polami wygenerowanymi przez AI. Kod przypisuje również wartość processing_status równą success.
+
+        </p>
+
+        <p><strong
+            data-pl="6. Obsługa błędów"
+            data-en="6. Error handling">
+            6. Obsługa błędów
+        </strong></p>
+
+        <p
+            data-pl="Mechanizm try/catch zapobiega zatrzymaniu całego procesu w przypadku nieprawidłowej odpowiedzi AI."
+            data-en="A try/catch mechanism prevents an invalid AI response from stopping the entire workflow.">
+
+            Mechanizm try/catch zapobiega zatrzymaniu całego procesu w przypadku nieprawidłowej odpowiedzi AI.
+
+        </p>
+
+        <p
+            data-pl="Jeśli parsowanie lub walidacja zakończy się niepowodzeniem, rekord otrzymuje:"
+            data-en="If parsing or validation fails, the record receives:">
+
+            Jeśli parsowanie lub walidacja zakończy się niepowodzeniem, rekord otrzymuje:
+
+        </p>
+
+        <ul>
+            <li>processing_status: failed</li>
+            <li>processing_error – opis błędu</li>
+            <li>raw_ai_response – oryginalna odpowiedź wygenerowana przez AI</li>
+        </ul>
+
+        <p
+            data-pl="Dzięki temu nieudane rekordy mogą zostać zidentyfikowane i przeanalizowane bez utraty oryginalnych danych klienta."
+            data-en="This allows unsuccessful records to be identified and investigated without losing the original customer data.">
+
+            Dzięki temu nieudane rekordy mogą zostać zidentyfikowane i przeanalizowane bez utraty oryginalnych danych klienta.
+
+        </p>
+
+
+        <!-- STEP 4 -->
+
+        <h3
+            data-pl="Krok 4. Aktualizacja rekordów klientów – Google Sheets"
+            data-en="Step 4. Updating customer records – Google Sheets">
+
+            Krok 4. Aktualizacja rekordów klientów – Google Sheets
+
+        </h3>
+
+        <p>
+            <strong>Google Sheets – Update Row</strong>
+        </p>
+
+        <p
+            data-pl="Ostatni etap zapisuje wyniki analizy AI z powrotem w oryginalnym dokumencie Google Sheets."
+            data-en="The final stage writes the AI-generated results back to the original Google Sheets document.">
+
+            Ostatni etap zapisuje wyniki analizy AI z powrotem w oryginalnym dokumencie Google Sheets.
+
+        </p>
+
+        <div class="image-container">
+
+            <img src="../images/n8n/n8n6.png"
+                 alt="Google Sheets Update Row node"
+                 onclick="openLightbox(this)">
+
+        </div>
+
+        <p
+            data-pl="Operacja Update Row wykorzystuje pole row_number do identyfikacji odpowiedniego rekordu klienta."
+            data-en="The Update Row operation uses the row_number field to identify the corresponding customer record.">
+
+            Operacja Update Row wykorzystuje pole row_number do identyfikacji odpowiedniego rekordu klienta.
+
+        </p>
+
+        <p
+            data-pl="Węzeł został skonfigurowany do aktualizacji następujących kolumn:"
+            data-en="The node is configured to update the following columns:">
+
+            Węzeł został skonfigurowany do aktualizacji następujących kolumn:
+
+        </p>
+
+        <ul>
+            <li>ai_sentiment</li>
+            <li>ai_category</li>
+            <li>ai_urgency</li>
+            <li>ai_summary</li>
+            <li>recommended_action</li>
+        </ul>
+
+        <p
+            data-pl="Oryginalne informacje o klientach pozostają niezmienione."
+            data-en="The original customer information remains unchanged.">
+
+            Oryginalne informacje o klientach pozostają niezmienione.
+
+        </p>
+
+        <p
+            data-pl="Dodatkowy warunek zapewnia, że do operacji aktualizacji trafiają wyłącznie rekordy ze statusem processing_status: success. Nieudane odpowiedzi są wykluczane z aktualizacji."
+            data-en="An additional condition ensures that only records with processing_status: success proceed to the update operation. Failed responses are excluded from the update.">
+
+            Dodatkowy warunek zapewnia, że do operacji aktualizacji trafiają wyłącznie rekordy ze statusem processing_status: success. Nieudane odpowiedzi są wykluczane z aktualizacji.
+
+        </p>
+
+        <p
+            data-pl="W rezultacie oryginalny zbiór danych zostaje wzbogacony o informacje analityczne wygenerowane przez AI bez konieczności ręcznej ingerencji."
+            data-en="As a result, the original dataset is enriched with AI-generated analytical information without requiring manual intervention.">
+
+            W rezultacie oryginalny zbiór danych zostaje wzbogacony o informacje analityczne wygenerowane przez AI bez konieczności ręcznej ingerencji.
+
+        </p>
+
+
+        <!-- 5. PROJECT OUTCOME -->
+
+        <h2
+            data-pl="5. Rezultaty projektu"
+            data-en="5. Project outcome">
+
+            5. Rezultaty projektu
+
+        </h2>
+
+        <p
+            data-pl="Ukończony proces automatycznie analizuje opinie klientów i wzbogaca oryginalny zbiór danych o ustrukturyzowane informacje wygenerowane przez AI."
+            data-en="The completed workflow successfully processes customer feedback records and enriches the original dataset with structured AI-generated insights.">
+
+            Ukończony proces automatycznie analizuje opinie klientów i wzbogaca oryginalny zbiór danych o ustrukturyzowane informacje wygenerowane przez AI.
+
+        </p>
+
+        <div class="image-container">
+
+            <img src="../images/n8n/n8n7.png"
+                 alt="Completed customer feedback analysis results in Google Sheets"
+                 onclick="openLightbox(this)">
+
+        </div>
+
+        <p
+            data-pl="Projekt pokazuje, w jaki sposób lokalnie hostowane modele AI można zintegrować ze zautomatyzowanym procesem przetwarzania danych, aby ograniczyć pracę manualną i przekształcać nieustrukturyzowane opinie klientów w informacje wspierające podejmowanie decyzji biznesowych."
+            data-en="The project demonstrates how locally hosted AI models can be integrated into an automated data-processing workflow to reduce manual work and transform unstructured customer feedback into information that can support business decisions.">
+
+            Projekt pokazuje, w jaki sposób lokalnie hostowane modele AI można zintegrować ze zautomatyzowanym procesem przetwarzania danych, aby ograniczyć pracę manualną i przekształcać nieustrukturyzowane opinie klientów w informacje wspierające podejmowanie decyzji biznesowych.
+
+        </p>
+
+        <p><strong
+            data-pl="Najważniejsze rezultaty:"
+            data-en="Key outcomes:">
+            Najważniejsze rezultaty:
+        </strong></p>
+
+        <ul>
+
+            <li
+                data-pl="Automatyczna analiza 30 fikcyjnych opinii klientów."
+                data-en="Automated analysis of 30 fictional customer feedback records.">
+                Automatyczna analiza 30 fikcyjnych opinii klientów.
+            </li>
+
+            <li
+                data-pl="Klasyfikacja sentymentu i pilności z wykorzystaniem AI."
+                data-en="AI-based sentiment and urgency classification.">
+                Klasyfikacja sentymentu i pilności z wykorzystaniem AI.
+            </li>
+
+            <li
+                data-pl="Automatyczna identyfikacja kategorii opinii."
+                data-en="Automatic identification of feedback categories.">
+                Automatyczna identyfikacja kategorii opinii.
+            </li>
+
+            <li
+                data-pl="Zwięzłe podsumowania doświadczeń poszczególnych klientów."
+                data-en="Concise summaries of individual customer experiences.">
+                Zwięzłe podsumowania doświadczeń poszczególnych klientów.
+            </li>
+
+            <li
+                data-pl="Rekomendacje potencjalnych działań biznesowych generowane przez AI."
+                data-en="AI-generated recommendations for potential business actions.">
+                Rekomendacje potencjalnych działań biznesowych generowane przez AI.
+            </li>
+
+            <li
+                data-pl="Ustrukturyzowana walidacja danych i obsługa błędów."
+                data-en="Structured data validation and error handling.">
+                Ustrukturyzowana walidacja danych i obsługa błędów.
+            </li>
+
+            <li
+                data-pl="Automatyczna aktualizacja oryginalnego zbioru danych w Google Sheets."
+                data-en="Automatic updating of the original Google Sheets dataset.">
+                Automatyczna aktualizacja oryginalnego zbioru danych w Google Sheets.
+            </li>
+
+            <li
+                data-pl="Lokalne uruchamianie AI bez korzystania z płatnych zewnętrznych interfejsów API modeli LLM."
+                data-en="Local AI execution without paid external LLM API usage.">
+                Lokalne uruchamianie AI bez korzystania z płatnych zewnętrznych interfejsów API modeli LLM.
+            </li>
+
+        </ul>
+
+    </main>
+
+
+    <!-- LIGHTBOX -->
+
+    <div class="lightbox"
+         id="lightbox"
+         onclick="closeLightbox()">
+
+        <button class="lightbox-close"
+                onclick="closeLightbox()">
+            ×
+        </button>
+
+        <img id="lightbox-image"
+             src=""
+             alt="Expanded project screenshot">
+
+    </div>
+
+
+    <!-- LANGUAGE SWITCHING + LIGHTBOX -->
+
+    <script>
+
+        function setLanguage(language) {
+
+            document.documentElement.lang = language;
+
+            const elements =
+                document.querySelectorAll("[data-pl]");
+
+            elements.forEach(function(element) {
+
+                element.textContent =
+                    element.getAttribute("data-" + language);
+
+            });
+
+            document.getElementById("pl-btn")
+                .classList.toggle(
+                    "active",
+                    language === "pl"
+                );
+
+            document.getElementById("en-btn")
+                .classList.toggle(
+                    "active",
+                    language === "en"
+                );
+
+            localStorage.setItem(
+                "language",
+                language
+            );
+
+        }
+
+
+        function openLightbox(image) {
+
+            const lightbox =
+                document.getElementById("lightbox");
+
+            const lightboxImage =
+                document.getElementById("lightbox-image");
+
+            lightboxImage.src = image.src;
+
+            lightbox.classList.add("active");
+
+        }
+
+
+        function closeLightbox() {
+
+            document.getElementById("lightbox")
+                .classList.remove("active");
+
+        }
+
+
+        document.addEventListener("keydown", function(event) {
+
+            if (event.key === "Escape") {
+                closeLightbox();
+            }
+
+        });
+
+
+        const savedLanguage =
+            localStorage.getItem("language") || "pl";
+
+        setLanguage(savedLanguage);
+
+    </script>
+
+</body>
+</html>
+
